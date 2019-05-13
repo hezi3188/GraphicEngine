@@ -14,6 +14,12 @@ public class Triangle extends Geometry {
         this.c = new pointD3(c);
     }
 
+    public Triangle(Triangle T) {
+        this.a = T.getA();
+        this.b = T.getB();
+        this.c = T.getC();
+    }
+
     public pointD3 getA() {
         return new pointD3(a);
     }

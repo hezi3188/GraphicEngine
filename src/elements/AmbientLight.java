@@ -11,5 +11,11 @@ public class AmbientLight {
         Ka = ka;
     }
 
+    public AmbientLight(){
 
+    }
+    public AmbientLight(AmbientLight fillLight) {
+        RGB = new Color(fillLight.RGB);
+        Ka = fillLight.Ka;
+    }
 }

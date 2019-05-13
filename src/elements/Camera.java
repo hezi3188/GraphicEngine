@@ -27,6 +27,14 @@ public class Camera {
         }
     }
 
+    public Camera(Camera cam) {
+        this.position = cam.getPosition();
+        this.CamUp = cam.getCamUp();
+        this.CamLeft = cam.getCamLeft();
+        this.CamFront = cam.getCamFront();
+    }
+
+
     public ray constructRayThroughPixel(int pixelsX, int pixelsY,
                                         double Rx, double Rj,
                                         double distance,
