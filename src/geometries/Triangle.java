@@ -34,6 +34,7 @@ public class Triangle extends Geometry {
     public List<pointD3> findIntersections(ray R) {
         Plane plane = new Plane(a,b,c);
         List<pointD3> cut = plane.findIntersections(R);
+        if(cut == null) return null;
         pointD3 P = cut.get(0);
         vector v1 = a.substract(R.getStart());
         vector v2 = b.substract(R.getStart());

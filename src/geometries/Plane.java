@@ -63,7 +63,7 @@ public class Plane extends Geometry {
         Coordinate SumOFAlfa = X1.add(Y1.add(Z1)).multiply(new Coordinate(-1));
         //if (SumOFAlfa.isZero()) return null;
         double Alfa = SumOFNumbers.get()/SumOFAlfa.get();
-
+        if(Alfa<0) return null;
         vector NewVec = new vector(R.getPoint()).multScalar(Alfa);
         pointD3 Cut = R.getStart().add(NewVec);
         List<pointD3> out = new ArrayList<>();

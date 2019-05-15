@@ -1,12 +1,12 @@
 package renderer;
 
 import elements.Camera;
-import javafx.geometry.Point3D;
 import primitives.Color;
 import primitives.pointD3;
 import primitives.ray;
 import scene.Scene;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Render {
@@ -28,15 +28,25 @@ public class Render {
        for(int i=0;i<PXx;i++)
             for(int y=0;y<PXy;y++) {
                 R = OurCam.constructRayThroughPixel(PXx, PXy, i, y, distance, 10, 10);
-                CloseP = this.getClosestPoint(Simulation.getImage().findIntersections(R));
-                if(CloseP != null){
-                    imageWriter.writePixel(i,y,this.calcColor(CloseP));
-                }
+                if(IntersectionOnPixel(R).size() > 0)
+                    imageWriter.writePixel(i,y,this.calcColor(new pointD3(1,2,3)));
+                //CloseP = this.getClosestPoint(Simulation.getImage().get(0).findIntersections(R));
+                //if(CloseP != null){
+                 //   imageWriter.writePixel(i,y,this.calcColor(CloseP));
+                //}
             }
         printGrid(Math.min(PXx,PXy));
         imageWriter.writeToimage();
     }
-
+    private List<pointD3> IntersectionOnPixel(ray R){
+        List<pointD3> Points =new ArrayList<>();
+        Simulation.getImage().forEach((x)->{
+            List<pointD3> Test = x.findIntersections(R);
+            if(Test != null)
+                Points.addAll(Test);
+        });
+        return Points;
+    }
     private Color calcColor(pointD3 p){
         return new primitives.Color(java.awt.Color.green);
     }

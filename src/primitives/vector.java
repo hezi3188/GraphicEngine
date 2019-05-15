@@ -15,6 +15,9 @@ public class vector {
 	public vector(pointD3 point) {
 		this.point = new pointD3(point) ;
 	}
+	public vector(double x, double y,double z) {
+		this.point = new pointD3(x,y,z) ;
+	}
 
 	public pointD3 getPoint() {
 		return new pointD3(point) ;
