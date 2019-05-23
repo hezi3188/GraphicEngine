@@ -43,7 +43,7 @@ class RenderTest2 {
         scene.insertImage(triangle2);
         scene.insertImage(triangle3);
         scene.insertImage(triangle4);
-        scene.setFillLight(new AmbientLight(new Color(java.awt.Color.BLACK),1));
+        scene.setFillLight(new AmbientLight(new Color(java.awt.Color.white),0.2));
         scene.setDis(100);
 
         ImageWriter imageWriter = new ImageWriter("Render test", 500, 500, 500, 500);
