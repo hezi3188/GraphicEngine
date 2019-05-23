@@ -18,7 +18,7 @@ public class Render {
         this.Simulation = new Scene(S);
     }
 
-    public void renderImage(int PXx, int PXy){
+    public void renderImage(ImageWriter img){
         Camera OurCam = this.Simulation.getCam();
         double distance = this.Simulation.getDisToScreen();
         String name = this.Simulation.getName();
@@ -26,10 +26,10 @@ public class Render {
         Map<Geometry,List<pointD3>> mapOfAllCut;
         Map.Entry<Geometry,pointD3> entryClosePoint = null;
         pointD3 CloseP;
-       this.imageWriter = new ImageWriter(name, 500, 500, PXx, PXy);
-       for(int i=0;i<PXx;i++)
-            for(int y=0;y<PXy;y++) {
-                R = OurCam.constructRayThroughPixel(PXx, PXy, i, y, distance, 10, 10);
+       this.imageWriter = new ImageWriter(img);
+       for(int i=0;i<img.getNx();i++)
+            for(int y=0;y<img.getNy();y++) {
+                R = OurCam.constructRayThroughPixel(img.getNx(), img.getNx(), i, y, distance, img.getWidth(), img.getHeight());
                 mapOfAllCut = IntersectionOnPixel(R);
                 if(mapOfAllCut.size() > 0) {
                     entryClosePoint = getClosestPoint(mapOfAllCut);
@@ -40,7 +40,7 @@ public class Render {
                  //   imageWriter.writePixel(i,y,this.calcColor(CloseP));
                 //}
             }
-        printGrid(Math.min(PXx,PXy));
+        printGrid(Math.min(img.getNx(),img.getNy()));
         imageWriter.writeToimage();
     }
     private Map<Geometry,List<pointD3>> IntersectionOnPixel(ray R){
@@ -48,13 +48,15 @@ public class Render {
         List<pointD3> Points =new ArrayList<>();
         Simulation.getImage().forEach((x)->{
             List<pointD3> Test = x.findIntersections(R);
-            if(Test != null)
+            if(Test != null && Test.size() > 0)
                 MapGeo.put((Geometry) x,Test);
         });
         return MapGeo;
     }
     private Color calcColor(Geometry g){
-        return new primitives.Color(java.awt.Color.green);
+        Color amissionLight=this.Simulation.getFillLight().GetIntensity();
+        Color ObjLight = g.getEmmission();
+        return new primitives.Color(amissionLight.add(ObjLight));
     }
 
     private Map.Entry<Geometry,pointD3> getClosestPoint(Map<Geometry,List<pointD3>> points){

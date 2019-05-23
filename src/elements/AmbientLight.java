@@ -10,7 +10,9 @@ public class AmbientLight {
         this.RGB = new Color(RGB) ;
         Ka = ka;
     }
-
+    public Color GetIntensity(){
+        return new Color(this.RGB.scale(Ka));
+    }
     public AmbientLight(){
 
     }

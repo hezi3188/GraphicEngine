@@ -8,12 +8,14 @@ public class Plane extends Geometry {
     protected pointD3 a;
     protected vector cross;
 
-    public Plane(pointD3 a, vector cross) {
+    public Plane(pointD3 a, vector cross,Color color) {
+        super(color);
         this.a = new pointD3(a);
         this.cross = new vector(cross).normalize();
     }
 
-    public Plane(pointD3 a, pointD3 b, pointD3 c) {
+    public Plane(pointD3 a, pointD3 b, pointD3 c, Color color) {
+        super(color);
         this.a = new pointD3(a);
         this.cross = new vector(c.substract(a)).crossProduct(new vector(b.substract(a)));
     }
@@ -47,7 +49,7 @@ public class Plane extends Geometry {
     @Override
     public vector getNormal(pointD3 a) {
         return new vector(cross);
-    }
+    }//For what we need that?
 
     @Override
     public List<pointD3> findIntersections(ray R) {

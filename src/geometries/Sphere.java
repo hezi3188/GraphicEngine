@@ -7,8 +7,8 @@ import java.util.List;
 public class Sphere extends RadialGeometry implements IGeometry {
     protected pointD3 center;
 
-    public Sphere(double radius, pointD3 center) {
-        super(radius);
+    public Sphere(double radius, pointD3 center,Color c) {
+        super(radius,c);
         this.center = new pointD3(center);
     }
 

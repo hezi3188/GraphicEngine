@@ -4,8 +4,8 @@ import primitives.*;
 public class Cylinder extends Tube{
     public Coordinate len;
 
-    public Cylinder(double radius, ray center, Coordinate len) {
-        super(radius, center);
+    public Cylinder(double radius, ray center, Coordinate len,Color c) {
+        super(radius, center , c);
         this.len = new Coordinate(len);
     }
 

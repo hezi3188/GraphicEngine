@@ -1,6 +1,7 @@
 package geometries;
 
 import org.junit.jupiter.api.Test;
+import primitives.Color;
 import primitives.pointD3;
 import primitives.ray;
 import primitives.vector;
@@ -18,7 +19,7 @@ class PlaneTest {
         pointD3 p2 = new pointD3(1,1,1);
         pointD3 p3 = new pointD3(0,1,1);
 
-        Plane P = new Plane(p1,p2,p3);
+        Plane P = new Plane(p1,p2,p3,new Color(java.awt.Color.CYAN));
 
         ray R = new ray(new pointD3(0,0,0),new vector(1,1,1));
         List<pointD3> C =P.findIntersections(R);

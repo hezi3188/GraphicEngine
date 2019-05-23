@@ -60,7 +60,7 @@ public class pointD2 {
 		}
 		// ***************** Administration  ******************** //
 		public pointD2 substract(pointD2 p){
-			return new pointD2(this.getX().subtract(p.getY()),this.getY().subtract(p.getY()));
+			return new pointD2(this.getX().subtract(p.getY()),this.getY().subtract(p.getY()));//I think that there is mistake
 		}
 		public pointD2 add(vector v){
 			return new pointD2(

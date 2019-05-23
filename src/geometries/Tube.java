@@ -6,8 +6,8 @@ import java.util.List;
 public class Tube extends RadialGeometry implements IGeometry {
     protected ray center;
 
-    public Tube(double radius, ray center) {
-        super(radius);
+    public Tube(double radius, ray center,Color c) {
+        super(radius,c);
         this.center = new ray(center);
     }
 

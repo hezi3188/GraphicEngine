@@ -8,13 +8,15 @@ public class Triangle extends Geometry {
     protected pointD3 b;
     protected pointD3 c;
 
-    public Triangle(pointD3 a, pointD3 b, pointD3 c) {
+    public Triangle(pointD3 a, pointD3 b, pointD3 c, Color color) {
+        super(color);
          this.a = new pointD3(a);
         this.b = new pointD3(b);
         this.c = new pointD3(c);
     }
 
     public Triangle(Triangle T) {
+        super(T);
         this.a = T.getA();
         this.b = T.getB();
         this.c = T.getC();
@@ -32,7 +34,7 @@ public class Triangle extends Geometry {
         return new pointD3(c);
     }
     public List<pointD3> findIntersections(ray R) {
-        Plane plane = new Plane(a,b,c);
+        Plane plane = new Plane(a,b,c,this.getEmmission());
         List<pointD3> cut = plane.findIntersections(R);
         if(cut == null) return null;
         pointD3 P = cut.get(0);

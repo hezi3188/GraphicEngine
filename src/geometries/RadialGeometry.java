@@ -1,13 +1,15 @@
 package geometries;
 import primitives.*;
 
-public abstract class RadialGeometry{
+public abstract class RadialGeometry extends Geometry{
     double _radius;
 
-    public RadialGeometry(double radius) {
+    public RadialGeometry(double radius,Color c) {
+        super(c);
         this._radius = radius;
     }
     public RadialGeometry(RadialGeometry obj) {
+        super(obj);
         this._radius = obj._radius;
     }
 
