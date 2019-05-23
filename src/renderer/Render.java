@@ -33,7 +33,7 @@ public class Render {
                 mapOfAllCut = IntersectionOnPixel(R);
                 if(mapOfAllCut.size() > 0) {
                     entryClosePoint = getClosestPoint(mapOfAllCut);
-                    imageWriter.writePixel(i, y, this.calcColor(entryClosePoint.getKey()));
+                    imageWriter.writePixel(i, y, this.calcColor(entryClosePoint.getKey(),entryClosePoint.getValue()));
                 }
                 //CloseP = this.getClosestPoint(Simulation.getImage().get(0).findIntersections(R));
                 //if(CloseP != null){
@@ -53,7 +53,7 @@ public class Render {
         });
         return MapGeo;
     }
-    private Color calcColor(Geometry g){
+    private Color calcColor(Geometry g,pointD3 p){
         Color amissionLight=this.Simulation.getFillLight().GetIntensity();
         Color ObjLight = g.getEmmission();
         return new primitives.Color(amissionLight.add(ObjLight));

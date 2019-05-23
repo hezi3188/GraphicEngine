@@ -11,8 +11,8 @@ public class Camera {
     protected vector CamLeft;
 
     public Camera(){
-        this.position = new pointD3(0.0,0.0,10.0);
-        this.CamFront = new vector(new pointD3(0,0,1));
+        this.position = new pointD3(0.0,0.0,0.0);
+        this.CamFront = new vector(new pointD3(0,0,-1));
         this.CamUp = new vector(new pointD3(0,1,0));
         this.CamLeft = CamFront.crossProduct(CamUp);
     }
@@ -57,7 +57,7 @@ public class Camera {
         // need substract from point, so change direction of vector
         pointD3 YXonPlane = TopLeftOfPlane.add(CamUp.multScalar(CenterFromTopPixelY*(-1))).add(CamLeft.multScalar(CenterFromLeftPixelX*(-1)));
 
-        return new ray(position,YXonPlane.substract(position));
+        return new ray(position,YXonPlane.substract(position).normalize());
     }
 
     /*Getters and Setters*/

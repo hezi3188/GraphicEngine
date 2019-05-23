@@ -41,7 +41,7 @@ public class Sphere extends RadialGeometry implements IGeometry {
         double d2 = (u.length()*u.length()) - (Tm*Tm);
         double d = Math.sqrt(d2);
         if(d>this.get_radius()) return null;
-        double Th2 = (this.get_radius()*this.get_radius()) - d2;
+        double Th2 = (this.get_radius()*this.get_radius()) - d*d;
         double Th = Math.sqrt(Th2);
         double T1 = Tm+Th;
         double T2 = Tm-Th;

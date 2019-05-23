@@ -21,7 +21,7 @@ class RenderTest2 {
 
         Scene scene = new Scene("Render test");
 
-        //scene.insertImage(new Sphere( 50, new pointD3(0.0, 0.0, -150),new Color(java.awt.Color.red)));
+        scene.insertImage(new Sphere( 50, new pointD3(0.0, 0.0, -150),new Color(java.awt.Color.red)));
 
         Triangle triangle = new Triangle(new pointD3( 100, 0, -149),
                 new pointD3(  0, 100, -149),
@@ -44,12 +44,7 @@ class RenderTest2 {
         scene.insertImage(triangle3);
         scene.insertImage(triangle4);
         scene.setFillLight(new AmbientLight(new Color(java.awt.Color.BLACK),1));
-        scene.setCamAndDis(
-                new Camera(
-                        new pointD3(-100, -100, -100),
-                        new vector(new pointD3(1, 0, 0)),
-                        new vector(new pointD3(0, 1, 0)))
-                ,1);
+        scene.setDis(100);
 
         ImageWriter imageWriter = new ImageWriter("Render test", 500, 500, 500, 500);
 

@@ -58,6 +58,7 @@ public class Scene {
     public Scene(String name) {
         this.name = name;
         this.image = new ArrayList<Intersectable>();
+        this.cam = new Camera();
     }
 
     public void insertImage(Intersectable image) {
@@ -74,6 +75,9 @@ public class Scene {
 
     public void setCamAndDis(Camera cam,double disToScreen) {
         this.cam = new Camera(cam);
+        this.DisToScreen = disToScreen;
+    }
+    public void setDis(double disToScreen) {
         this.DisToScreen = disToScreen;
     }
 
