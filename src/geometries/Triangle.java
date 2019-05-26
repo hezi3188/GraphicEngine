@@ -62,6 +62,6 @@ public class Triangle extends Geometry {
 
     @Override
     public vector getNormal(pointD3 a) {
-        return new vector(c.substract(a)).crossProduct(new vector(b.substract(a)));
+        return new vector(c.substract(this.a)).crossProduct(new vector(b.substract(this.a))).normalize();
     }
 }

@@ -11,7 +11,11 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 class TriangleTest {
-
+    @Test
+    void Koko() {
+        Triangle T=new Triangle(new pointD3(0,1,-2),new pointD3(-1,-1,-2),new pointD3(1,-1,-2),new Color(java.awt.Color.BLACK));
+        assertEquals(T.getNormal(null).toString(),"");
+    }
     @Test
     void findIntersections() {
         pointD3 p1 = new pointD3(0,1,0);
