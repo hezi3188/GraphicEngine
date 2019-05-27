@@ -2,6 +2,7 @@ package scene;
 
 import elements.AmbientLight;
 import elements.Camera;
+import elements.Light;
 import geometries.Intersectable;
 import geometries.Triangle;
 import primitives.Color;
@@ -14,6 +15,7 @@ public class Scene {
     private String name;
 
     private Color backColor;
+    private List<Light> lights;
     private AmbientLight fillLight;
     private Camera cam;
     private double DisToScreen;
@@ -25,7 +27,8 @@ public class Scene {
         this.fillLight = s.getFillLight();
         this.cam = s.getCam();
         this.DisToScreen = s.getDisToScreen();
-        this.image = new ArrayList<Intersectable>();
+        this.image = new ArrayList<Intersectable>(s.image);
+        this.lights = new ArrayList<Light>(s.lights);
         this.image = s.getImage();
     }
 
@@ -55,14 +58,23 @@ public class Scene {
         return new ArrayList<Intersectable>(this.image);
     }
 
+    public List<Light> getLight() {
+        return new ArrayList<Light>(this.lights);
+    }
+
     public Scene(String name) {
         this.name = name;
         this.image = new ArrayList<Intersectable>();
+        this.lights = new ArrayList<Light>();
         this.cam = new Camera();
     }
 
     public void insertImage(Intersectable image) {
         this.image.add(image); // ToDo: deep copy to image
+    }
+
+    public void insertLight(Light or) {
+        this.lights.add(or); // ToDo: deep copy to image
     }
 
     public void setBackColor(Color backColor) {

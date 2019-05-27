@@ -1,6 +1,7 @@
 package renderer;
 
 import elements.Camera;
+import elements.Light;
 import geometries.Geometry;
 import primitives.Color;
 import primitives.pointD3;
@@ -54,9 +55,20 @@ public class Render {
         return MapGeo;
     }
     private Color calcColor(Geometry g,pointD3 p){
-        Color amissionLight=this.Simulation.getFillLight().GetIntensity();
-        Color ObjLight = g.getEmmission();
-        return new primitives.Color(amissionLight.add(ObjLight));
+        Color a;
+        Color amissionLight=g.getEmmission();
+        if(this.Simulation.getLight() != null && this.Simulation.getLight().size()>0) {
+            for (Light x : Simulation.getLight()) {
+                a = x.getIntensity(p);
+                amissionLight = amissionLight.add(a);
+            }
+        }
+        else {
+            amissionLight=g.getEmmission();
+            amissionLight.add(Simulation.getFillLight().GetIntensity());
+            return amissionLight;
+        }
+        return new primitives.Color(amissionLight);
     }
 
     private Map.Entry<Geometry,pointD3> getClosestPoint(Map<Geometry,List<pointD3>> points){
