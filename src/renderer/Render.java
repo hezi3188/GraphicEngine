@@ -1,11 +1,12 @@
 package renderer;
 
-import elements.Camera;
-import elements.Light;
+import elements.*;
 import geometries.Geometry;
+import org.w3c.dom.NodeList;
 import primitives.Color;
 import primitives.pointD3;
 import primitives.ray;
+import primitives.vector;
 import scene.Scene;
 
 import java.util.*;
@@ -36,6 +37,7 @@ public class Render {
                     entryClosePoint = getClosestPoint(mapOfAllCut);
                     imageWriter.writePixel(i, y, this.calcColor(entryClosePoint.getKey(),entryClosePoint.getValue()));
                 }
+                else {imageWriter.writePixel(i, y, this.Simulation.getBackColor());}
                 //CloseP = this.getClosestPoint(Simulation.getImage().get(0).findIntersections(R));
                 //if(CloseP != null){
                  //   imageWriter.writePixel(i,y,this.calcColor(CloseP));
@@ -55,12 +57,52 @@ public class Render {
         return MapGeo;
     }
     private Color calcColor(Geometry g,pointD3 p){
-        Color a;
-        Color amissionLight=g.getEmmission();
+        Color ambientLight = Simulation.getFillLight().GetIntensity();
+        Color emissionLight = g.getEmmission();
+        Color IO = new Color(ambientLight.getColor().getRed() + emissionLight.getColor().getRed(),ambientLight.getColor().getGreen() + emissionLight.getColor().getGreen(),
+                ambientLight.getColor().getBlue() + emissionLight.getColor().getBlue());
+        Color diffuseLight = new Color(0,0,0);
+        Color specularLight = new Color(0,0,0);
+        for (LightSource x : Simulation.getLight()) {
+            diffuseLight = diffuseLight.add(calcDiffusiveComp(g.get_material().get_Kd(),g.getNormal(p),x.getL(p),x.getIntensity(p)));
+            specularLight = specularLight.add(calcSpecularComp(g.get_material().get_Ks(),p.substract(Simulation.getCam().getPosition()),g.getNormal(p),x.getL(p),g.get_material().get_nShininess(),x.getIntensity(p)));
+        }
+
+
+        return IO.add(specularLight,diffuseLight);
+        /*Color a;
+        Color amissionLight=new Color(0,0,0);//=g.getEmmission();
         if(this.Simulation.getLight() != null && this.Simulation.getLight().size()>0) {
             for (Light x : Simulation.getLight()) {
-                a = x.getIntensity(p);
-                amissionLight = amissionLight.add(a);
+
+                List<Boolean> IsCome = new ArrayList<>();
+                if(x instanceof PointLight) {
+                    Simulation.getImage().forEach((y) -> {
+                        List<pointD3> l = y.findIntersections(new ray(((PointLight) x).get_position(), p));*/
+                        /*if (y.equals(g) && (l == null || l.size() == 0))
+                            IsCome.add(false);
+                        if (l != null && l.size() > 0) {
+                            for (pointD3 z : l) {
+                                if ((((PointLight) x).get_position().distance(z)) < ((PointLight) x).get_position().distance(p) && !z.equals(p)) {
+                                    //IsCome.add(false);
+                                }
+                            }
+                        }*/
+                  /*  });
+                    /*if( IsCome.size()==0 &&
+                        g.findIntersections(new ray(this.Simulation.getCam().getPosition(),((PointLight) x).get_position()))!= null &&
+                        g.findIntersections(new ray(this.Simulation.getCam().getPosition(),((PointLight) x).get_position())).size()>0)
+                            IsCome.add(false);*/
+               // }
+
+                /*if(IsCome.size()==0) {
+                    if(x instanceof SpotLight)
+                        a = ((SpotLight)x).getIntensity(p, g,g.getNormal(p));
+                    else
+                        a = x.getIntensity(p, g);
+                    amissionLight = amissionLight.add(a);
+                    //amissionLight = amissionLight.add(new Color(java.awt.Color.white));
+                }*//*
             }
         }
         else {
@@ -68,7 +110,22 @@ public class Render {
             amissionLight.add(Simulation.getFillLight().GetIntensity());
             return amissionLight;
         }
-        return new primitives.Color(amissionLight);
+        return new primitives.Color(amissionLight);*/
+    }
+
+    private Color calcSpecularComp(double ks, vector substract, vector normal, vector l, int nShininess, Color intensity) {
+       double R = substract.normalize().dotProduct(normal.normalize().multScalar(-1));
+       R = Math.max(R,0);
+       Color x = intensity.scale(ks*(Math.pow(R,nShininess)));
+       return x;
+    }
+
+    private Color calcDiffusiveComp(double kd, vector normal, vector l, Color intensity) {
+        double Cos = -normal.normalize().dotProduct(l.normalize());
+        Cos = Math.max(0,Cos);
+        double pwr = kd*Cos;
+        Color Dif = intensity.scale(pwr);
+        return Dif;
     }
 
     private Map.Entry<Geometry,pointD3> getClosestPoint(Map<Geometry,List<pointD3>> points){

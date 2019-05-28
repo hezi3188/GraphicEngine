@@ -1,5 +1,6 @@
 package elements;
 
+import geometries.Geometry;
 import primitives.Color;
 import primitives.pointD3;
 import primitives.vector;
@@ -8,7 +9,7 @@ import primitives.vector;
 public abstract class Light {
     Color _color;
 
-    public Color getIntensity(pointD3 point){
+    public Color getIntensity(pointD3 point, Geometry g){
         return null;
     }
 

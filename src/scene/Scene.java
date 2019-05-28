@@ -3,6 +3,7 @@ package scene;
 import elements.AmbientLight;
 import elements.Camera;
 import elements.Light;
+import elements.LightSource;
 import geometries.Intersectable;
 import geometries.Triangle;
 import primitives.Color;
@@ -15,7 +16,7 @@ public class Scene {
     private String name;
 
     private Color backColor;
-    private List<Light> lights;
+    private List<LightSource> lights;
     private AmbientLight fillLight;
     private Camera cam;
     private double DisToScreen;
@@ -28,7 +29,7 @@ public class Scene {
         this.cam = s.getCam();
         this.DisToScreen = s.getDisToScreen();
         this.image = new ArrayList<Intersectable>(s.image);
-        this.lights = new ArrayList<Light>(s.lights);
+        this.lights = new ArrayList<LightSource>(s.lights);
         this.image = s.getImage();
     }
 
@@ -58,22 +59,23 @@ public class Scene {
         return new ArrayList<Intersectable>(this.image);
     }
 
-    public List<Light> getLight() {
-        return new ArrayList<Light>(this.lights);
+    public List<LightSource> getLight() {
+        return new ArrayList<LightSource>(this.lights);
     }
 
     public Scene(String name) {
         this.name = name;
         this.image = new ArrayList<Intersectable>();
-        this.lights = new ArrayList<Light>();
+        this.lights = new ArrayList<LightSource>();
         this.cam = new Camera();
+        this.setBackColor(new Color(java.awt.Color.BLACK));
     }
 
     public void insertImage(Intersectable image) {
         this.image.add(image); // ToDo: deep copy to image
     }
 
-    public void insertLight(Light or) {
+    public void insertLight(LightSource or) {
         this.lights.add(or); // ToDo: deep copy to image
     }
 

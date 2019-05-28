@@ -13,6 +13,11 @@ public class ray extends vector {
 		this.start = new pointD3(strat);
 	}
 
+	public ray(pointD3 strat, pointD3 End) {
+		super(End.substract(strat).normalize());
+		this.start = new pointD3(strat);
+	}
+
 	public ray (ray r){
 		super(r);
 		this.start = new pointD3(r.getStart());
