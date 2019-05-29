@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="de0a31d5-529a-4492-9981-be38f26a79f3" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Render test Color.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Render test Color.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Render test Color2.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Render test Color2.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/elements/LightSource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/elements/LightSource.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/geometries/Geometry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Geometry.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/renderer/Render.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/Render.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/renderer/RenderTestColor.java" beforeDir="false" afterPath="$PROJECT_DIR$/tests/renderer/RenderTestColor.java" afterDir="false" />
     </list>
@@ -30,35 +26,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/tests/renderer/RenderTestColor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="127">
-              <caret line="64" column="52" selection-start-line="64" selection-start-column="52" selection-end-line="64" selection-end-column="52" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/elements/LightSource.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="9" column="4" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="4" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/elements/SpotLight.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="233">
-              <caret line="18" column="8" selection-start-line="18" selection-start-column="8" selection-end-line="18" selection-end-column="8" />
+            <state relative-caret-position="173">
+              <caret line="52" selection-start-line="52" selection-end-line="52" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -74,8 +46,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/renderer/Render.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="68" column="12" selection-start-line="68" selection-start-column="12" selection-end-line="68" selection-end-column="12" />
+            <state relative-caret-position="204">
+              <caret line="63" column="8" lean-forward="true" selection-start-line="63" selection-start-column="8" selection-end-line="63" selection-end-column="8" />
             </state>
           </provider>
         </entry>
@@ -160,11 +132,11 @@
         <option value="$PROJECT_DIR$/tests/elements/PointLightTest.java" />
         <option value="$PROJECT_DIR$/src/scene/Scene.java" />
         <option value="$PROJECT_DIR$/src/geometries/Geometry.java" />
-        <option value="$PROJECT_DIR$/tests/renderer/RenderTestColor.java" />
-        <option value="$PROJECT_DIR$/src/renderer/Render.java" />
         <option value="$PROJECT_DIR$/src/elements/PointLight.java" />
         <option value="$PROJECT_DIR$/src/elements/LightSource.java" />
         <option value="$PROJECT_DIR$/src/elements/SpotLight.java" />
+        <option value="$PROJECT_DIR$/src/renderer/Render.java" />
+        <option value="$PROJECT_DIR$/tests/renderer/RenderTestColor.java" />
       </list>
     </option>
   </component>
@@ -401,34 +373,34 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="RenderTestColor_test4 - 2019.05.29 at 11h 48m 17s.xml">
+    <history-entry file="RenderTestColor_test4 - 2019.05.29 at 12h 57m 28s.xml">
       <configuration name="RenderTestColor.test4" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="RenderTestColor_test4 - 2019.05.29 at 11h 50m 29s.xml">
+    <history-entry file="RenderTestColor_test4 - 2019.05.29 at 13h 00m 17s.xml">
       <configuration name="RenderTestColor.test4" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="RenderTestColor_test4 - 2019.05.29 at 11h 52m 09s.xml">
+    <history-entry file="RenderTestColor_test4 - 2019.05.29 at 13h 01m 04s.xml">
       <configuration name="RenderTestColor.test4" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="RenderTestColor_test4 - 2019.05.29 at 11h 52m 28s.xml">
+    <history-entry file="RenderTestColor_test4 - 2019.05.29 at 13h 01m 41s.xml">
       <configuration name="RenderTestColor.test4" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="RenderTestColor_test4 - 2019.05.29 at 11h 53m 17s.xml">
+    <history-entry file="RenderTestColor_test4 - 2019.05.29 at 13h 02m 34s.xml">
       <configuration name="RenderTestColor.test4" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="RenderTestColor_test4 - 2019.05.29 at 11h 54m 14s.xml">
+    <history-entry file="RenderTestColor_test4 - 2019.05.29 at 13h 04m 15s.xml">
       <configuration name="RenderTestColor.test4" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="RenderTestColor_test4 - 2019.05.29 at 11h 54m 38s.xml">
+    <history-entry file="RenderTestColor_test4 - 2019.05.29 at 13h 12m 32s.xml">
       <configuration name="RenderTestColor.test4" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="RenderTestColor_test4 - 2019.05.29 at 11h 55m 29s.xml">
+    <history-entry file="RenderTestColor_test4 - 2019.05.29 at 13h 14m 19s.xml">
       <configuration name="RenderTestColor.test4" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="RenderTestColor_test4 - 2019.05.29 at 11h 57m 26s.xml">
+    <history-entry file="RenderTestColor_test4 - 2019.05.29 at 13h 16m 32s.xml">
       <configuration name="RenderTestColor.test4" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="RenderTestColor_test4 - 2019.05.29 at 11h 58m 59s.xml">
+    <history-entry file="RenderTestColor_test4 - 2019.05.29 at 13h 18m 52s.xml">
       <configuration name="RenderTestColor.test4" configurationId="JUnit" />
     </history-entry>
   </component>
@@ -436,7 +408,7 @@
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20166163" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.20166163" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -445,12 +417,12 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3284553" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.13333334" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.36097562" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4211382" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Terminal" order="7" weight="0.32357723" />
+      <window_info anchor="bottom" id="Terminal" order="7" weight="0.15447155" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="9" />
       <window_info anchor="bottom" id="Messages" order="10" weight="0.32520324" />
@@ -464,6 +436,35 @@
       <window_info anchor="right" id="Palette&#9;" order="7" />
       <window_info anchor="right" id="Coverage" order="8" side_tool="true" weight="0.3295302" />
     </layout>
+    <layout-to-restore>
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20166163" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Image Layers" order="2" />
+      <window_info id="Designer" order="3" />
+      <window_info id="UI Designer" order="4" />
+      <window_info id="Capture Tool" order="5" />
+      <window_info id="Favorites" order="6" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3284553" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.36097562" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4211382" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Terminal" order="7" weight="0.15447155" />
+      <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
+      <window_info anchor="bottom" id="Version Control" order="9" />
+      <window_info anchor="bottom" id="Messages" order="10" weight="0.32520324" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Maven" order="4" />
+      <window_info anchor="right" id="Theme Preview" order="5" />
+      <window_info anchor="right" id="Capture Analysis" order="6" />
+      <window_info anchor="right" id="Palette&#9;" order="7" />
+      <window_info anchor="right" id="Coverage" order="8" side_tool="true" weight="0.3295302" />
+    </layout-to-restore>
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -473,6 +474,12 @@
           <line>24</line>
           <properties />
           <option name="timeStamp" value="32" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/renderer/Render.java</url>
+          <line>36</line>
+          <properties />
+          <option name="timeStamp" value="47" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -774,8 +781,32 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Render test Color2.jpg">
-      <provider selected="true" editor-type-id="images" />
+    <entry file="file://$PROJECT_DIR$/src/elements/LightSource.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" selection-start-line="9" selection-end-line="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/elements/SpotLight.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="233">
+          <caret line="18" column="8" selection-start-line="18" selection-start-column="8" selection-end-line="18" selection-end-column="8" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/lib/junit-platform-commons-1.5.0-M1.jar!/org/junit/platform/commons/util/ReflectionUtils.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="109">
+          <caret line="355" selection-start-line="355" selection-end-line="355" />
+        </state>
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/elements/PointLight.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -787,13 +818,6 @@
             <element signature="e#3297#3298#0" expanded="true" />
             <element signature="e#3359#3360#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/renderer/Render.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="68" column="12" selection-start-line="68" selection-start-column="12" selection-end-line="68" selection-end-column="12" />
         </state>
       </provider>
     </entry>
@@ -809,30 +833,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/renderer/Render.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="63" column="8" lean-forward="true" selection-start-line="63" selection-start-column="8" selection-end-line="63" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Render test Color2.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/tests/renderer/RenderTestColor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="127">
-          <caret line="64" column="52" selection-start-line="64" selection-start-column="52" selection-end-line="64" selection-end-column="52" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/elements/LightSource.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="4" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="4" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/elements/SpotLight.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="233">
-          <caret line="18" column="8" selection-start-line="18" selection-start-column="8" selection-end-line="18" selection-end-column="8" />
+        <state relative-caret-position="173">
+          <caret line="52" selection-start-line="52" selection-end-line="52" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

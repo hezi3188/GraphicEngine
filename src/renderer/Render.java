@@ -56,17 +56,29 @@ public class Render {
         });
         return MapGeo;
     }
+    private boolean occluded(LightSource L,pointD3 point,Geometry g){
+        vector lightDirect = L.getL(point).multScalar(-1);
+        vector Eps = new vector(g.getNormal(point).normalize());
+        Eps = Eps.multScalar(2);
+        pointD3 newPoint = point.add(Eps);
+        ray Lightray = new ray(newPoint,lightDirect);
+        return IntersectionOnPixel(Lightray).isEmpty();
+
+    }
     private Color calcColor(Geometry g,pointD3 p){
         /*Color ambientLight = Simulation.getFillLight().GetIntensity();
         Color emissionLight = g.getEmmission();
         Color IO = new Color(ambientLight.getColor().getRed() + emissionLight.getColor().getRed(),ambientLight.getColor().getGreen() + emissionLight.getColor().getGreen(),
                 ambientLight.getColor().getBlue() + emissionLight.getColor().getBlue());*/
+
         Color IO = new Color(0,0,0);
         Color diffuseLight = new Color(0,0,0);
         Color specularLight = new Color(0,0,0);
         for (LightSource x : Simulation.getLight()) {
-            diffuseLight = diffuseLight.add(calcDiffusiveComp(g.get_material().get_Kd(),g.getNormal(p),x.getL(p),x.getIntensity(p)));
-            specularLight = specularLight.add(calcSpecularComp(g.get_material().get_Ks(),p.substract(Simulation.getCam().getPosition()),g.getNormal(p),x.getL(p),g.get_material().get_nShininess(),x.getIntensity(p)));
+            if (occluded(x, p, g)) {
+                diffuseLight = diffuseLight.add(calcDiffusiveComp(g.get_material().get_Kd(), g.getNormal(p), x.getL(p), x.getIntensity(p)));
+                specularLight = specularLight.add(calcSpecularComp(g.get_material().get_Ks(), p.substract(Simulation.getCam().getPosition()), g.getNormal(p), x.getL(p), g.get_material().get_nShininess(), x.getIntensity(p)));
+            }
         }
 
 
@@ -145,7 +157,11 @@ public class Render {
         for (Map.Entry<Geometry,List<pointD3>> entry : points.entrySet())
         {
             for(pointD3 innerEntery:entry.getValue()){
-                if(Min == -1) Min = innerEntery.distance(this.Simulation.getCam().getPosition());
+                if(Min == -1) {//first iteration
+                    Min = innerEntery.distance(this.Simulation.getCam().getPosition());
+                    ClosePoint = new pointD3(innerEntery);
+                    maxEntry = entry;
+                }
                 if(Min > Math.min(Min,innerEntery.distance(this.Simulation.getCam().getPosition()))){
                     Min = Math.min(Min,innerEntery.distance(this.Simulation.getCam().getPosition()));
                     ClosePoint = new pointD3(innerEntery);
