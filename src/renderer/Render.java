@@ -57,10 +57,11 @@ public class Render {
         return MapGeo;
     }
     private Color calcColor(Geometry g,pointD3 p){
-        Color ambientLight = Simulation.getFillLight().GetIntensity();
+        /*Color ambientLight = Simulation.getFillLight().GetIntensity();
         Color emissionLight = g.getEmmission();
         Color IO = new Color(ambientLight.getColor().getRed() + emissionLight.getColor().getRed(),ambientLight.getColor().getGreen() + emissionLight.getColor().getGreen(),
-                ambientLight.getColor().getBlue() + emissionLight.getColor().getBlue());
+                ambientLight.getColor().getBlue() + emissionLight.getColor().getBlue());*/
+        Color IO = new Color(0,0,0);
         Color diffuseLight = new Color(0,0,0);
         Color specularLight = new Color(0,0,0);
         for (LightSource x : Simulation.getLight()) {
@@ -69,7 +70,7 @@ public class Render {
         }
 
 
-        return IO.add(specularLight,diffuseLight);
+        return IO.add(diffuseLight,specularLight);
         /*Color a;
         Color amissionLight=new Color(0,0,0);//=g.getEmmission();
         if(this.Simulation.getLight() != null && this.Simulation.getLight().size()>0) {
@@ -114,9 +115,13 @@ public class Render {
     }
 
     private Color calcSpecularComp(double ks, vector substract, vector normal, vector l, int nShininess, Color intensity) {
-       double R = substract.normalize().dotProduct(normal.normalize().multScalar(-1));
-       R = Math.max(R,0);
-       Color x = intensity.scale(ks*(Math.pow(R,nShininess)));
+       normal = normal.normalize();
+       l = l.normalize();
+       substract = substract.normalize();
+       vector R = normal.multScalar(l.dotProduct(normal)*-2).add(l);
+       double Angul = R.dotProduct(substract);
+       Angul = Math.abs(Angul);
+       Color x = intensity.scale(ks*(Math.pow(Angul,nShininess)));
        return x;
     }
 
@@ -134,10 +139,14 @@ public class Render {
         Map.Entry<Geometry,List<pointD3>> maxEntry = null;
         double Min = -1;
         pointD3 ClosePoint= null;
+        if(points.size()>1){
+            points.size();
+        }
         for (Map.Entry<Geometry,List<pointD3>> entry : points.entrySet())
         {
             for(pointD3 innerEntery:entry.getValue()){
-                if(Min > Math.min(Min,innerEntery.distance(this.Simulation.getCam().getPosition())) || Min == -1){
+                if(Min == -1) Min = innerEntery.distance(this.Simulation.getCam().getPosition());
+                if(Min > Math.min(Min,innerEntery.distance(this.Simulation.getCam().getPosition()))){
                     Min = Math.min(Min,innerEntery.distance(this.Simulation.getCam().getPosition()));
                     ClosePoint = new pointD3(innerEntery);
                     maxEntry = entry;

@@ -18,7 +18,7 @@ public abstract class Geometry implements IGeometry{
 
     Geometry(Color c){
         EmmissionLight = new Color(c);
-        _material = new Material(10,2,15);
+        _material = new Material(1.5,6,200);
     }
     Geometry(Geometry g){
         EmmissionLight = g.getEmmission();
