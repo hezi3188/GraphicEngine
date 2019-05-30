@@ -3,5 +3,5 @@ import primitives.*;
 import java.util.List;
 
 public interface Intersectable {
-    List<pointD3> findIntersections(ray R);
+    List<Point3D> findIntersections(ray R);
 }

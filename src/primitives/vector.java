@@ -3,29 +3,29 @@ package primitives;
 import java.util.Objects;
 
 public class vector {
-	pointD3 point;
+	Point3D point;
 // ***************** Constructors ********************** //
 
 	public vector() {
-		this.point = new pointD3();
+		this.point = new Point3D();
 	}
 	public vector(vector vec){
-		this.point = new pointD3(vec.getPoint()) ;
+		this.point = new Point3D(vec.getPoint()) ;
 	}
-	public vector(pointD3 point) {
-		this.point = new pointD3(point) ;
+	public vector(Point3D point) {
+		this.point = new Point3D(point) ;
 	}
 	public vector(double x, double y,double z) {
-		this.point = new pointD3(x,y,z) ;
+		this.point = new Point3D(x,y,z) ;
 	}
 
-	public pointD3 getPoint() {
-		return new pointD3(point) ;
+	public Point3D getPoint() {
+		return new Point3D(point) ;
 	}
 // ***************** Getters/Setters ********************** //
 
-	public void setPoint(pointD3 point) {
-		this.point = new pointD3(point);
+	public void setPoint(Point3D point) {
+		this.point = new Point3D(point);
 	}
 
     @Override
@@ -48,11 +48,11 @@ public class vector {
 
 	// ***************** Administration  ******************** //
 	public vector add(vector vec){
-		return new vector(new pointD3(this.getPoint().add(vec)));
+		return new vector(new Point3D(this.getPoint().add(vec)));
 	}
 	public vector substract(vector vec){
 		return  new vector(
-					new pointD3(
+					new Point3D(
 							this.getPoint().getX().subtract(
 									new Coordinate(vec.getPoint().getX())
 							),
@@ -85,7 +85,7 @@ public class vector {
 	public vector multScalar(double scalar){
 		Coordinate Scal = new Coordinate(scalar);
 		return  new vector(
-				new pointD3(
+				new Point3D(
 						this.getPoint().getX().multiply(Scal),
 						this.getPoint().getY().multiply(Scal),
 						this.getPoint().getZ().multiply(Scal)
@@ -99,7 +99,7 @@ public class vector {
 	}
 
 	public double length (){
-		return  this.getPoint().distance(new pointD3());
+		return  this.getPoint().distance(new Point3D());
 	}
 	public vector crossProduct(vector vec){
 		Coordinate x1,y1,z1,x2,y2,z2,newX,newY,newZ;
@@ -119,7 +119,7 @@ public class vector {
 				(x1.multiply(y2)).subtract(y1.multiply(x2))
 		);
 		return  new vector(
-				new pointD3(newX,newY,newZ)
+				new Point3D(newX,newY,newZ)
 		);
 	}
 	public vector normalize(){
@@ -129,7 +129,7 @@ public class vector {
 		y=new Coordinate(this.getPoint().getY());
 		z=new Coordinate(this.getPoint().getZ());
 		return new vector(
-				new pointD3(
+				new Point3D(
 						x.scale(1/normal),
 						y.scale(1/normal),
 						z.scale(1/normal)

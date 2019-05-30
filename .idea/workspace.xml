@@ -2,8 +2,52 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="de0a31d5-529a-4492-9981-be38f26a79f3" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Render test Color2.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Render test Color2.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GraphicsPhong/elements/Camera.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GraphicsPhong/elements/Camera.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GraphicsPhong/elements/Light.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GraphicsPhong/elements/Light.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GraphicsPhong/elements/LightSource.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GraphicsPhong/elements/LightSource.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GraphicsPhong/elements/PointLight.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GraphicsPhong/elements/PointLight.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GraphicsPhong/elements/SpotLight.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GraphicsPhong/elements/SpotLight.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GraphicsPhong/geometries/IGeometry.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GraphicsPhong/geometries/IGeometry.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GraphicsPhong/geometries/Intersectable.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GraphicsPhong/geometries/Intersectable.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GraphicsPhong/geometries/Plane.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GraphicsPhong/geometries/Plane.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GraphicsPhong/geometries/Sphere.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GraphicsPhong/geometries/Sphere.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GraphicsPhong/geometries/Triangle.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GraphicsPhong/geometries/Triangle.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GraphicsPhong/geometries/Tube.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GraphicsPhong/geometries/Tube.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GraphicsPhong/primitives/pointD2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GraphicsPhong/primitives/pointD2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GraphicsPhong/primitives/pointD3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GraphicsPhong/primitives/ray.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GraphicsPhong/primitives/ray.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GraphicsPhong/primitives/vector.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GraphicsPhong/primitives/vector.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GraphicsPhong/renderer/Render.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GraphicsPhong/renderer/Render.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/test/GraphicsPhong/elements/PointLightTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/GraphicsPhong/elements/PointLightTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/test/GraphicsPhong/geometries/PlaneTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/GraphicsPhong/geometries/PlaneTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/test/GraphicsPhong/geometries/TriangleTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/GraphicsPhong/geometries/TriangleTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/test/GraphicsPhong/primitives/pointD3Test.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/test/GraphicsPhong/renderer/RenderTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/GraphicsPhong/renderer/RenderTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/test/GraphicsPhong/renderer/RenderTest2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/GraphicsPhong/renderer/RenderTest2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/test/GraphicsPhong/renderer/RenderTestColor.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/GraphicsPhong/renderer/RenderTestColor.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/elements/Camera.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/elements/Camera.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/elements/Light.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/elements/Light.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/elements/LightSource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/elements/LightSource.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/elements/PointLight.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/elements/PointLight.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/elements/SpotLight.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/elements/SpotLight.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/geometries/IGeometry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/IGeometry.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/geometries/Intersectable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Intersectable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/geometries/Plane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Plane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/geometries/Sphere.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Sphere.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/geometries/Triangle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Triangle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/geometries/Tube.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometries/Tube.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/primitives/pointD3.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/primitives/Point3D.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/primitives/ray.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/primitives/ray.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/primitives/vector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/primitives/vector.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/renderer/Render.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/renderer/Render.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/elements/PointLightTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/tests/elements/PointLightTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/geometries/PlaneTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/tests/geometries/PlaneTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/geometries/TriangleTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/tests/geometries/TriangleTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/primitives/pointD3Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/tests/primitives/point3DTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/renderer/RenderTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/tests/renderer/RenderTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/renderer/RenderTest2.java" beforeDir="false" afterPath="$PROJECT_DIR$/tests/renderer/RenderTest2.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/renderer/RenderTestColor.java" beforeDir="false" afterPath="$PROJECT_DIR$/tests/renderer/RenderTestColor.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -26,11 +70,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tests/renderer/RenderTestColor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="173">
-              <caret line="52" selection-start-line="52" selection-end-line="52" />
+            <state relative-caret-position="227">
+              <caret line="220" column="41" selection-start-line="220" selection-start-column="33" selection-end-line="220" selection-end-column="41" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -39,15 +83,15 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Render test Color2.jpg">
+        <entry file="file://$PROJECT_DIR$/GrateImage.jpg">
           <provider selected="true" editor-type-id="images" />
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/renderer/Render.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="63" column="8" lean-forward="true" selection-start-line="63" selection-start-column="8" selection-end-line="63" selection-end-column="8" />
+            <state relative-caret-position="85">
+              <caret line="71" column="10" selection-start-line="71" selection-start-column="10" selection-end-line="71" selection-end-column="10" />
             </state>
           </provider>
         </entry>
@@ -55,13 +99,12 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/elements/PointLight.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="112">
-              <caret line="47" lean-forward="true" selection-start-line="47" selection-end-line="47" />
+            <state relative-caret-position="714">
+              <caret line="46" selection-start-line="46" selection-end-line="46" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#1948#1949#0" expanded="true" />
                 <element signature="e#1996#1997#0" expanded="true" />
-                <element signature="e#3297#3298#0" expanded="true" />
-                <element signature="e#3359#3360#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -70,8 +113,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/geometries/Geometry.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="279">
-              <caret line="19" column="38" lean-forward="true" selection-start-line="19" selection-start-column="38" selection-end-line="19" selection-end-column="38" />
+            <state relative-caret-position="272">
+              <caret line="19" column="38" selection-start-line="19" selection-start-column="38" selection-end-line="19" selection-end-column="38" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#387#388#0" expanded="true" />
@@ -107,7 +150,6 @@
         <option value="$PROJECT_DIR$/src/geometries/IGeometry.java" />
         <option value="$PROJECT_DIR$/tests/primitives/pointD2Test.java" />
         <option value="$PROJECT_DIR$/tests/primitives/pointD3Test.java" />
-        <option value="$PROJECT_DIR$/src/primitives/pointD3.java" />
         <option value="$PROJECT_DIR$/src/primitives/Color.java" />
         <option value="$PROJECT_DIR$/src/renderer/ImageWriter.java" />
         <option value="$PROJECT_DIR$/src/primitives/vector.java" />
@@ -135,8 +177,10 @@
         <option value="$PROJECT_DIR$/src/elements/PointLight.java" />
         <option value="$PROJECT_DIR$/src/elements/LightSource.java" />
         <option value="$PROJECT_DIR$/src/elements/SpotLight.java" />
-        <option value="$PROJECT_DIR$/src/renderer/Render.java" />
+        <option value="$PROJECT_DIR$/src/primitives/pointD3.java" />
+        <option value="$PROJECT_DIR$/src/primitives/Point3D.java" />
         <option value="$PROJECT_DIR$/tests/renderer/RenderTestColor.java" />
+        <option value="$PROJECT_DIR$/src/renderer/Render.java" />
       </list>
     </option>
   </component>
@@ -153,6 +197,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -216,8 +262,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -268,24 +312,8 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.RenderTestColor.test4">
-    <configuration name="PointLightTest.getIntensity" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="GraphicsPhong" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="elements.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="elements" />
-      <option name="MAIN_CLASS_NAME" value="elements.PointLightTest" />
-      <option name="METHOD_NAME" value="getIntensity" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="RenderTest2.basicRendering" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.RenderTestColor.bigimageTest">
+    <configuration name="RenderTestColor.bigimageTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="GraphicsPhong" />
       <extension name="coverage">
         <pattern>
@@ -294,8 +322,24 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="renderer" />
-      <option name="MAIN_CLASS_NAME" value="renderer.RenderTest2" />
-      <option name="METHOD_NAME" value="basicRendering" />
+      <option name="MAIN_CLASS_NAME" value="renderer.RenderTestColor" />
+      <option name="METHOD_NAME" value="bigimageTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RenderTestColor.spotLightTest2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="GraphicsPhong" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="renderer.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="renderer" />
+      <option name="MAIN_CLASS_NAME" value="renderer.RenderTestColor" />
+      <option name="METHOD_NAME" value="spotLightTest2" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -333,17 +377,17 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TriangleTest.Koko" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="RenderTestColor.test5" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="GraphicsPhong" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="geometries.*" />
+          <option name="PATTERN" value="renderer.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="geometries" />
-      <option name="MAIN_CLASS_NAME" value="geometries.TriangleTest" />
-      <option name="METHOD_NAME" value="Koko" />
+      <option name="PACKAGE_NAME" value="renderer" />
+      <option name="MAIN_CLASS_NAME" value="renderer.RenderTestColor" />
+      <option name="METHOD_NAME" value="test5" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -351,11 +395,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.RenderTestColor.bigimageTest" />
+        <item itemvalue="JUnit.RenderTestColor.spotLightTest2" />
+        <item itemvalue="JUnit.RenderTestColor.test5" />
         <item itemvalue="JUnit.RenderTestColor.test4" />
         <item itemvalue="JUnit.RenderTestColor.test3" />
-        <item itemvalue="JUnit.PointLightTest.getIntensity" />
-        <item itemvalue="JUnit.TriangleTest.Koko" />
-        <item itemvalue="JUnit.RenderTest2.basicRendering" />
       </list>
     </recent_temporary>
   </component>
@@ -373,42 +417,51 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="RenderTestColor_test4 - 2019.05.29 at 12h 57m 28s.xml">
-      <configuration name="RenderTestColor.test4" configurationId="JUnit" />
+    <history-entry file="RenderTestColor_spotLightTest2 - 2019.05.30 at 10h 40m 01s.xml">
+      <configuration name="RenderTestColor.spotLightTest2" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="RenderTestColor_test4 - 2019.05.29 at 13h 00m 17s.xml">
-      <configuration name="RenderTestColor.test4" configurationId="JUnit" />
+    <history-entry file="RenderTestColor_spotLightTest2 - 2019.05.30 at 10h 40m 29s.xml">
+      <configuration name="RenderTestColor.spotLightTest2" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="RenderTestColor_test4 - 2019.05.29 at 13h 01m 04s.xml">
-      <configuration name="RenderTestColor.test4" configurationId="JUnit" />
+    <history-entry file="RenderTestColor_spotLightTest2 - 2019.05.30 at 10h 54m 32s.xml">
+      <configuration name="RenderTestColor.spotLightTest2" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="RenderTestColor_test4 - 2019.05.29 at 13h 01m 41s.xml">
-      <configuration name="RenderTestColor.test4" configurationId="JUnit" />
+    <history-entry file="RenderTestColor_bigimageTest - 2019.05.30 at 10h 55m 45s.xml">
+      <configuration name="RenderTestColor.bigimageTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="RenderTestColor_test4 - 2019.05.29 at 13h 02m 34s.xml">
-      <configuration name="RenderTestColor.test4" configurationId="JUnit" />
+    <history-entry file="RenderTestColor_bigimageTest - 2019.05.30 at 11h 10m 03s.xml">
+      <configuration name="RenderTestColor.bigimageTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="RenderTestColor_test4 - 2019.05.29 at 13h 04m 15s.xml">
-      <configuration name="RenderTestColor.test4" configurationId="JUnit" />
+    <history-entry file="RenderTestColor_bigimageTest - 2019.05.30 at 11h 14m 01s.xml">
+      <configuration name="RenderTestColor.bigimageTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="RenderTestColor_test4 - 2019.05.29 at 13h 12m 32s.xml">
-      <configuration name="RenderTestColor.test4" configurationId="JUnit" />
+    <history-entry file="RenderTestColor_bigimageTest - 2019.05.30 at 11h 16m 34s.xml">
+      <configuration name="RenderTestColor.bigimageTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="RenderTestColor_test4 - 2019.05.29 at 13h 14m 19s.xml">
-      <configuration name="RenderTestColor.test4" configurationId="JUnit" />
+    <history-entry file="RenderTestColor_bigimageTest - 2019.05.30 at 11h 20m 15s.xml">
+      <configuration name="RenderTestColor.bigimageTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="RenderTestColor_test4 - 2019.05.29 at 13h 16m 32s.xml">
-      <configuration name="RenderTestColor.test4" configurationId="JUnit" />
+    <history-entry file="RenderTestColor_bigimageTest - 2019.05.30 at 11h 24m 22s.xml">
+      <configuration name="RenderTestColor.bigimageTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="RenderTestColor_test4 - 2019.05.29 at 13h 18m 52s.xml">
-      <configuration name="RenderTestColor.test4" configurationId="JUnit" />
+    <history-entry file="RenderTestColor_bigimageTest - 2019.05.30 at 11h 28m 08s.xml">
+      <configuration name="RenderTestColor.bigimageTest" configurationId="JUnit" />
     </history-entry>
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.20166163" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20166163" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -421,7 +474,7 @@
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4211382" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.3284553" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.15447155" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="9" />
@@ -471,21 +524,15 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/elements/SpotLight.java</url>
-          <line>24</line>
+          <line>23</line>
           <properties />
           <option name="timeStamp" value="32" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/renderer/Render.java</url>
-          <line>36</line>
-          <properties />
-          <option name="timeStamp" value="47" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/tests/primitives/pointD3Test.java">
+    <entry file="file://$PROJECT_DIR$/tests/primitives/point3DTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="8" column="4" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="9" />
@@ -516,16 +563,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="5" column="21" selection-start-line="5" selection-start-column="21" selection-end-line="5" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/renderer/ImageWriter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="456">
-          <caret line="70" column="1" lean-forward="true" selection-start-line="70" selection-start-column="1" selection-end-line="70" selection-end-column="1" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -712,18 +749,6 @@
     <entry file="file://$PROJECT_DIR$/Render test Color.jpg">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/primitives/pointD3.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1241">
-          <caret line="78" selection-start-line="78" selection-end-line="78" />
-          <folding>
-            <element signature="e#1510#1511#0" expanded="true" />
-            <element signature="e#2315#2316#0" expanded="true" />
-            <element signature="e#2359#2360#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/primitives/pointD2.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="748">
@@ -810,21 +835,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/elements/PointLight.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="112">
-          <caret line="47" lean-forward="true" selection-start-line="47" selection-end-line="47" />
+        <state relative-caret-position="714">
+          <caret line="46" selection-start-line="46" selection-end-line="46" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#1948#1949#0" expanded="true" />
             <element signature="e#1996#1997#0" expanded="true" />
-            <element signature="e#3297#3298#0" expanded="true" />
-            <element signature="e#3359#3360#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/geometries/Geometry.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="279">
-          <caret line="19" column="38" lean-forward="true" selection-start-line="19" selection-start-column="38" selection-end-line="19" selection-end-column="38" />
+        <state relative-caret-position="272">
+          <caret line="19" column="38" selection-start-line="19" selection-start-column="38" selection-end-line="19" selection-end-column="38" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#387#388#0" expanded="true" />
@@ -833,23 +857,55 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/renderer/Render.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="63" column="8" lean-forward="true" selection-start-line="63" selection-start-column="8" selection-end-line="63" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Render test Color2.jpg">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/tests/renderer/RenderTestColor.java">
+    <entry file="file://$PROJECT_DIR$/Spot test 2.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/testPart3_02.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/renderer/ImageWriter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="173">
-          <caret line="52" selection-start-line="52" selection-end-line="52" />
+        <state relative-caret-position="394">
+          <caret line="70" column="1" selection-start-line="70" selection-start-column="1" selection-end-line="70" selection-end-column="1" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/primitives/Point3D.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="33">
+          <caret line="24" column="20" selection-start-line="24" selection-start-column="20" selection-end-line="24" selection-end-column="20" />
+          <folding>
+            <element signature="e#1454#1455#0" expanded="true" />
+            <element signature="e#1510#1511#0" expanded="true" />
+            <element signature="e#2315#2316#0" expanded="true" />
+            <element signature="e#2359#2360#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/renderer/RenderTestColor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="227">
+          <caret line="220" column="41" selection-start-line="220" selection-start-column="33" selection-end-line="220" selection-end-column="41" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GrateImage.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/renderer/Render.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="71" column="10" selection-start-line="71" selection-start-column="10" selection-end-line="71" selection-end-column="10" />
         </state>
       </provider>
     </entry>

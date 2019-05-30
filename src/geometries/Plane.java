@@ -5,23 +5,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Plane extends Geometry {
-    protected pointD3 a;
+    protected Point3D a;
     protected vector cross;
 
-    public Plane(pointD3 a, vector cross,Color color) {
+    public Plane(Point3D a, vector cross, Color color) {
         super(color);
-        this.a = new pointD3(a);
+        this.a = new Point3D(a);
         this.cross = new vector(cross).normalize();
     }
 
-    public Plane(pointD3 a, pointD3 b, pointD3 c, Color color) {
+    public Plane(Point3D a, Point3D b, Point3D c, Color color) {
         super(color);
-        this.a = new pointD3(a);
+        this.a = new Point3D(a);
         this.cross = new vector(c.substract(a)).crossProduct(new vector(b.substract(a)));
     }
 
-    public pointD3 getA() {
-        return new pointD3(a);
+    public Point3D getA() {
+        return new Point3D(a);
     }
 
     public vector getCross() {
@@ -29,8 +29,8 @@ public class Plane extends Geometry {
     }
 
     public Coordinate getZofPlane(){
-        pointD3  N = getNormal(null).getPoint();
-        pointD3 P = getA();
+        Point3D N = getNormal(null).getPoint();
+        Point3D P = getA();
         Coordinate XM = N.getX().multiply(P.getX());
         Coordinate YM = N.getY().multiply(P.getY());
         Coordinate ZM = N.getZ().multiply(P.getZ());
@@ -47,12 +47,12 @@ public class Plane extends Geometry {
     }
 
     @Override
-    public vector getNormal(pointD3 a) {
+    public vector getNormal(Point3D a) {
         return new vector(cross);
     }//For what we need that?
 
     @Override
-    public List<pointD3> findIntersections(ray R) {
+    public List<Point3D> findIntersections(ray R) {
         Coordinate X = getCross().getPoint().getX().multiply(R.getStart().getX());
         Coordinate Y = getCross().getPoint().getY().multiply(R.getStart().getY());
         Coordinate Z = getCross().getPoint().getZ().multiply(R.getStart().getZ());
@@ -67,8 +67,8 @@ public class Plane extends Geometry {
         double Alfa = SumOFNumbers.get()/SumOFAlfa.get();
         if(Alfa<0) return null;
         vector NewVec = new vector(R.getPoint()).multScalar(Alfa);
-        pointD3 Cut = R.getStart().add(NewVec);
-        List<pointD3> out = new ArrayList<>();
+        Point3D Cut = R.getStart().add(NewVec);
+        List<Point3D> out = new ArrayList<>();
         out.add(Cut);
         return out;
     }

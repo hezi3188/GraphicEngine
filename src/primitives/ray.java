@@ -1,38 +1,36 @@
 package primitives;
 
-import java.util.Objects;
-
 public class ray extends vector {
-	pointD3 start;
+	Point3D start;
 /**
  * Javadoc formatted documentation
  */
 // ***************** Constructors ********************** //
-	public ray(pointD3 strat, vector vec) {
+	public ray(Point3D strat, vector vec) {
 		super(vec);
-		this.start = new pointD3(strat);
+		this.start = new Point3D(strat);
 	}
 
-	public ray(pointD3 strat, pointD3 End) {
+	public ray(Point3D strat, Point3D End) {
 		super(End.substract(strat).normalize());
-		this.start = new pointD3(strat);
+		this.start = new Point3D(strat);
 	}
 
 	public ray (ray r){
 		super(r);
-		this.start = new pointD3(r.getStart());
+		this.start = new Point3D(r.getStart());
 	}
 	public ray(){
 		super();
-		start = new pointD3();
+		start = new Point3D();
 	}
 // ***************** Getters/Setters ********************** //
-	public pointD3 getStart() {
-		return new pointD3(start);
+	public Point3D getStart() {
+		return new Point3D(start);
 	}
 
-	public void setStart(pointD3 start) {
-		this.start = new pointD3(start) ;
+	public void setStart(Point3D start) {
+		this.start = new Point3D(start) ;
 	}
 
 // ***************** Administration  ******************** //

@@ -4,15 +4,15 @@ import primitives.*;
 import java.util.List;
 
 public class Triangle extends Geometry {
-    protected pointD3 a;
-    protected pointD3 b;
-    protected pointD3 c;
+    protected Point3D a;
+    protected Point3D b;
+    protected Point3D c;
 
-    public Triangle(pointD3 a, pointD3 b, pointD3 c, Color color) {
+    public Triangle(Point3D a, Point3D b, Point3D c, Color color) {
         super(color);
-         this.a = new pointD3(a);
-        this.b = new pointD3(b);
-        this.c = new pointD3(c);
+         this.a = new Point3D(a);
+        this.b = new Point3D(b);
+        this.c = new Point3D(c);
     }
 
     public Triangle(Triangle T) {
@@ -22,22 +22,22 @@ public class Triangle extends Geometry {
         this.c = T.getC();
     }
 
-    public pointD3 getA() {
-        return new pointD3(a);
+    public Point3D getA() {
+        return new Point3D(a);
     }
 
-    public pointD3 getB() {
-        return new pointD3(b);
+    public Point3D getB() {
+        return new Point3D(b);
     }
 
-    public pointD3 getC() {
-        return new pointD3(c);
+    public Point3D getC() {
+        return new Point3D(c);
     }
-    public List<pointD3> findIntersections(ray R) {
+    public List<Point3D> findIntersections(ray R) {
         Plane plane = new Plane(a,b,c,this.getEmmission());
-        List<pointD3> cut = plane.findIntersections(R);
+        List<Point3D> cut = plane.findIntersections(R);
         if(cut == null) return null;
-        pointD3 P = cut.get(0);
+        Point3D P = cut.get(0);
         vector v1 = a.substract(R.getStart());
         vector v2 = b.substract(R.getStart());
         vector v3 = c.substract(R.getStart());
@@ -61,7 +61,7 @@ public class Triangle extends Geometry {
     }
 
     @Override
-    public vector getNormal(pointD3 a) {
+    public vector getNormal(Point3D a) {
         return new vector(c.substract(this.a)).crossProduct(new vector(b.substract(this.a))).normalize();
     }
 }

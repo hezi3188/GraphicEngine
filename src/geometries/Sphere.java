@@ -5,20 +5,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Sphere extends RadialGeometry implements IGeometry {
-    protected pointD3 center;
+    protected Point3D center;
 
-    public Sphere(double radius, pointD3 center,Color c) {
+    public Sphere(double radius, Point3D center, Color c) {
         super(radius,c);
-        this.center = new pointD3(center);
+        this.center = new Point3D(center);
     }
 
-    public Sphere(RadialGeometry obj, pointD3 center) {
+    public Sphere(RadialGeometry obj, Point3D center) {
         super(obj);
-        this.center = new pointD3(center);
+        this.center = new Point3D(center);
     }
 
-    public pointD3 getCenter() {
-        return new pointD3(center);
+    public Point3D getCenter() {
+        return new Point3D(center);
     }
 
     @Override
@@ -30,12 +30,12 @@ public class Sphere extends RadialGeometry implements IGeometry {
     }
 
     @Override
-    public vector getNormal(pointD3 a) {
+    public vector getNormal(Point3D a) {
         return new vector(a.substract(center)).normalize();
     }
 
     @Override
-    public List<pointD3> findIntersections(ray R) {
+    public List<Point3D> findIntersections(ray R) {
         vector u = center.substract(R.getStart());
         double Tm = ((vector)R).dotProduct(u);
         double d2 = (u.length()*u.length()) - (Tm*Tm);
@@ -45,9 +45,9 @@ public class Sphere extends RadialGeometry implements IGeometry {
         double Th = Math.sqrt(Th2);
         double T1 = Tm+Th;
         double T2 = Tm-Th;
-        pointD3 P1 = R.getStart().add(((vector)R).multScalar(T1));
-        pointD3 P2 = R.getStart().add(((vector)R).multScalar(T2));
-        List<pointD3> out = new ArrayList<>();
+        Point3D P1 = R.getStart().add(((vector)R).multScalar(T1));
+        Point3D P2 = R.getStart().add(((vector)R).multScalar(T2));
+        List<Point3D> out = new ArrayList<>();
         if(T1>0)out.add(P1);
         if(T2>0)out.add(P2);
         return out;

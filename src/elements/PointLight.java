@@ -1,19 +1,18 @@
 package elements;
 
-import geometries.Geometry;
 import primitives.Color;
-import primitives.pointD3;
+import primitives.Point3D;
 import primitives.vector;
 
 public class PointLight extends Light implements LightSource {
-    public pointD3 get_position() {
-        return new pointD3(_position);
+    public Point3D get_position() {
+        return new Point3D(_position);
     }
 
-    pointD3 _position;
+    Point3D _position;
     double _kc,_kl,_kq;
 
-    public PointLight(Color _color, pointD3 _position, double _kc, double _kl, double _kq) {
+    public PointLight(Color _color, Point3D _position, double _kc, double _kl, double _kq) {
         super(_color);
         this._position = _position;
         this._kc = _kc;
@@ -21,7 +20,7 @@ public class PointLight extends Light implements LightSource {
         this._kq = _kq;
     }
 
-    /*public Color getIntensity(pointD3 point, Geometry g){
+    /*public Color getIntensity(Point3D point, Geometry g){
         double d = getD(point);
 
         double precents = 80; //strong of the light
@@ -46,17 +45,17 @@ public class PointLight extends Light implements LightSource {
         //return this._color.scale(1/(_kc+_kl*d+_kq*d*d));
     }*/
 
-    protected double getD(pointD3 point) {
+    protected double getD(Point3D point) {
         return point.distance(_position);
     }
 
     @Override
-    public Color getIntensity(pointD3 point) {
+    public Color getIntensity(Point3D point) {
         double d = getD(point);
         double scale = (_kc+_kl*d+_kq*d*d);
         return this._color.scale(1/scale);
     }
-    public vector getL(pointD3 x){
+    public vector getL(Point3D x){
         return new vector(x.substract(this._position));
     }
 }

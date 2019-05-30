@@ -24,12 +24,12 @@ public class Tube extends RadialGeometry implements IGeometry {
     }
 
     @Override
-    public vector getNormal(pointD3 a) {
+    public vector getNormal(Point3D a) {
         return null;
     }
 
     @Override
-    public List<pointD3> findIntersections(ray R) {
+    public List<Point3D> findIntersections(ray R) {
         return null;
     }
 }

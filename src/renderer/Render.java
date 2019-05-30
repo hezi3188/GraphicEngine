@@ -2,9 +2,10 @@ package renderer;
 
 import elements.*;
 import geometries.Geometry;
-import org.w3c.dom.NodeList;
+import geometries.Plane;
+import geometries.Triangle;
 import primitives.Color;
-import primitives.pointD3;
+import primitives.Point3D;
 import primitives.ray;
 import primitives.vector;
 import scene.Scene;
@@ -25,47 +26,49 @@ public class Render {
         double distance = this.Simulation.getDisToScreen();
         String name = this.Simulation.getName();
         ray R;
-        Map<Geometry,List<pointD3>> mapOfAllCut;
-        Map.Entry<Geometry,pointD3> entryClosePoint = null;
-        pointD3 CloseP;
+        Map<Geometry,List<Point3D>> mapOfAllCut;
+        Map.Entry<Geometry, Point3D> entryClosePoint = null;
+        Point3D CloseP;
        this.imageWriter = new ImageWriter(img);
-       for(int i=0;i<img.getNx();i++)
-            for(int y=0;y<img.getNy();y++) {
-                R = OurCam.constructRayThroughPixel(img.getNx(), img.getNx(), i, y, distance, img.getWidth(), img.getHeight());
-                mapOfAllCut = IntersectionOnPixel(R);
-                if(mapOfAllCut.size() > 0) {
-                    entryClosePoint = getClosestPoint(mapOfAllCut);
-                    imageWriter.writePixel(i, y, this.calcColor(entryClosePoint.getKey(),entryClosePoint.getValue()));
-                }
-                else {imageWriter.writePixel(i, y, this.Simulation.getBackColor());}
-                //CloseP = this.getClosestPoint(Simulation.getImage().get(0).findIntersections(R));
-                //if(CloseP != null){
-                 //   imageWriter.writePixel(i,y,this.calcColor(CloseP));
-                //}
-            }
+       for(int i=0;i<img.getNx();i++) {
+           for (int y = 0; y < img.getNy(); y++) {
+               R = OurCam.constructRayThroughPixel(img.getNx(), img.getNx(), i, y, distance, img.getWidth(), img.getHeight());
+               mapOfAllCut = IntersectionOnPixel(R);
+               if (mapOfAllCut.size() > 0) {
+                   entryClosePoint = getClosestPoint(mapOfAllCut);
+                   imageWriter.writePixel(i, y, this.calcColor(entryClosePoint.getKey(), entryClosePoint.getValue()));
+               } else {
+                   imageWriter.writePixel(i, y, this.Simulation.getBackColor());
+               }
+               //CloseP = this.getClosestPoint(Simulation.getImage().get(0).findIntersections(R));
+               //if(CloseP != null){
+               //   imageWriter.writePixel(i,y,this.calcColor(CloseP));
+               //}
+           }
+       }
         printGrid(Math.min(img.getNx(),img.getNy()));
         imageWriter.writeToimage();
     }
-    private Map<Geometry,List<pointD3>> IntersectionOnPixel(ray R){
-        Map<Geometry,List<pointD3>> MapGeo = new HashMap<Geometry,List<pointD3>>();
-        List<pointD3> Points =new ArrayList<>();
+    private Map<Geometry,List<Point3D>> IntersectionOnPixel(ray R){
+        Map<Geometry,List<Point3D>> MapGeo = new HashMap<Geometry,List<Point3D>>();
+        List<Point3D> Points =new ArrayList<>();
         Simulation.getImage().forEach((x)->{
-            List<pointD3> Test = x.findIntersections(R);
+            List<Point3D> Test = x.findIntersections(R);
             if(Test != null && Test.size() > 0)
                 MapGeo.put((Geometry) x,Test);
         });
         return MapGeo;
     }
-    private boolean occluded(LightSource L,pointD3 point,Geometry g){
+    private boolean occluded(LightSource L, Point3D point, Geometry g){
         vector lightDirect = L.getL(point).multScalar(-1);
         vector Eps = new vector(g.getNormal(point).normalize());
         Eps = Eps.multScalar(2);
-        pointD3 newPoint = point.add(Eps);
+        Point3D newPoint = point.add(Eps);
         ray Lightray = new ray(newPoint,lightDirect);
         return IntersectionOnPixel(Lightray).isEmpty();
 
     }
-    private Color calcColor(Geometry g,pointD3 p){
+    private Color calcColor(Geometry g, Point3D p){
         /*Color ambientLight = Simulation.getFillLight().GetIntensity();
         Color emissionLight = g.getEmmission();
         Color IO = new Color(ambientLight.getColor().getRed() + emissionLight.getColor().getRed(),ambientLight.getColor().getGreen() + emissionLight.getColor().getGreen(),
@@ -91,11 +94,11 @@ public class Render {
                 List<Boolean> IsCome = new ArrayList<>();
                 if(x instanceof PointLight) {
                     Simulation.getImage().forEach((y) -> {
-                        List<pointD3> l = y.findIntersections(new ray(((PointLight) x).get_position(), p));*/
+                        List<Point3D> l = y.findIntersections(new ray(((PointLight) x).get_position(), p));*/
                         /*if (y.equals(g) && (l == null || l.size() == 0))
                             IsCome.add(false);
                         if (l != null && l.size() > 0) {
-                            for (pointD3 z : l) {
+                            for (Point3D z : l) {
                                 if ((((PointLight) x).get_position().distance(z)) < ((PointLight) x).get_position().distance(p) && !z.equals(p)) {
                                     //IsCome.add(false);
                                 }
@@ -145,33 +148,33 @@ public class Render {
         return Dif;
     }
 
-    private Map.Entry<Geometry,pointD3> getClosestPoint(Map<Geometry,List<pointD3>> points){
+    private Map.Entry<Geometry, Point3D> getClosestPoint(Map<Geometry,List<Point3D>> points){
         if(points==null) return null;
 
-        Map.Entry<Geometry,List<pointD3>> maxEntry = null;
+        Map.Entry<Geometry,List<Point3D>> maxEntry = null;
         double Min = -1;
-        pointD3 ClosePoint= null;
+        Point3D ClosePoint= null;
         if(points.size()>1){
             points.size();
         }
-        for (Map.Entry<Geometry,List<pointD3>> entry : points.entrySet())
+        for (Map.Entry<Geometry,List<Point3D>> entry : points.entrySet())
         {
-            for(pointD3 innerEntery:entry.getValue()){
+            for(Point3D innerEntery:entry.getValue()){
                 if(Min == -1) {//first iteration
                     Min = innerEntery.distance(this.Simulation.getCam().getPosition());
-                    ClosePoint = new pointD3(innerEntery);
+                    ClosePoint = new Point3D(innerEntery);
                     maxEntry = entry;
                 }
                 if(Min > Math.min(Min,innerEntery.distance(this.Simulation.getCam().getPosition()))){
                     Min = Math.min(Min,innerEntery.distance(this.Simulation.getCam().getPosition()));
-                    ClosePoint = new pointD3(innerEntery);
+                    ClosePoint = new Point3D(innerEntery);
                     maxEntry = entry;
                 }
             }
         }
-        Map.Entry<Geometry,pointD3> returnEntery;
+        Map.Entry<Geometry, Point3D> returnEntery;
         if(maxEntry != null){
-            returnEntery = new AbstractMap.SimpleEntry<Geometry,pointD3>(maxEntry.getKey(),ClosePoint);
+            returnEntery = new AbstractMap.SimpleEntry<Geometry, Point3D>(maxEntry.getKey(),ClosePoint);
             return returnEntery;
         }
         return null;
@@ -180,8 +183,8 @@ public class Render {
         if(imageWriter == null) return;
         for(int y=0;y<interval;y+=(interval/10))
             for(int i=0;i<interval;i++){
-                imageWriter.writePixel(i,y,new primitives.Color(java.awt.Color.magenta));
-                imageWriter.writePixel(y,i,new primitives.Color(java.awt.Color.magenta));
+                //imageWriter.writePixel(i,y,new primitives.Color(java.awt.Color.magenta));
+                //imageWriter.writePixel(y,i,new primitives.Color(java.awt.Color.magenta));
             }
     }
 }

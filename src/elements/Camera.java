@@ -1,25 +1,25 @@
 package elements;
 
-import primitives.pointD3;
+import primitives.Point3D;
 import primitives.ray;
 import primitives.vector;
 
 public class Camera {
-    protected pointD3 position;
+    protected Point3D position;
     protected vector CamFront;
     protected vector CamUp;
     protected vector CamLeft;
 
     public Camera(){
-        this.position = new pointD3(0.0,0.0,0.0);
-        this.CamFront = new vector(new pointD3(0,0,-1));
-        this.CamUp = new vector(new pointD3(0,1,0));
+        this.position = new Point3D(0.0,0.0,0.0);
+        this.CamFront = new vector(new Point3D(0,0,-1));
+        this.CamUp = new vector(new Point3D(0,1,0));
         this.CamLeft = CamFront.crossProduct(CamUp);
     }
 
-    public Camera(pointD3 point,vector ahead, vector up)
+    public Camera(Point3D point, vector ahead, vector up)
     {
-        this.position = new pointD3(point);
+        this.position = new Point3D(point);
         this.CamFront = ahead.normalize();
         this.CamUp = up.normalize();
         if(this.CamFront.dotProduct(this.CamUp) == 0) {
@@ -47,27 +47,27 @@ public class Camera {
         double CenterFromLeftPixelX = FromLeftPixelXNotUse + (distanceX/2);
         double CenterFromTopPixelY = FromTopPixelYNotUse + (distanceY/2);
 
-        pointD3 centerPlane = position.add(CamFront.multScalar(distance));
+        Point3D centerPlane = position.add(CamFront.multScalar(distance));
         vector PlaneTop = CamUp.multScalar(height);
         vector PlaneLeft = CamLeft.multScalar(width);
 
-        pointD3 TopOfPlane = centerPlane.add(PlaneTop.multScalar(0.5));
-        pointD3 TopLeftOfPlane = TopOfPlane.add(PlaneLeft.multScalar(0.5));
+        Point3D TopOfPlane = centerPlane.add(PlaneTop.multScalar(0.5));
+        Point3D TopLeftOfPlane = TopOfPlane.add(PlaneLeft.multScalar(0.5));
 
         // need substract from point, so change direction of vector
-        pointD3 YXonPlane = TopLeftOfPlane.add(CamUp.multScalar(CenterFromTopPixelY*(-1))).add(CamLeft.multScalar(CenterFromLeftPixelX*(-1)));
+        Point3D YXonPlane = TopLeftOfPlane.add(CamUp.multScalar(CenterFromTopPixelY*(-1))).add(CamLeft.multScalar(CenterFromLeftPixelX*(-1)));
 
         return new ray(position,YXonPlane.substract(position).normalize());
     }
 
     /*Getters and Setters*/
 
-    public pointD3 getPosition() {
-        return new pointD3(position);
+    public Point3D getPosition() {
+        return new Point3D(position);
     }
 
-    public void setPosition(pointD3 position) {
-        this.position = new pointD3(position);
+    public void setPosition(Point3D position) {
+        this.position = new Point3D(position);
     }
 
     public vector getCamFront() {

@@ -1,6 +1,5 @@
 package primitives;
 
-import java.util.Arrays;
 import java.util.Objects;
 
 
@@ -23,24 +22,24 @@ import java.util.Objects;
 
 // ***************** Operations ******************** //
 
-public class pointD3 extends pointD2 {
+public class Point3D extends pointD2 {
 	private Coordinate z;
 
 // ***************** Constructors ********************** //
 
-	public pointD3(Coordinate x,Coordinate y,Coordinate z) {
+	public Point3D(Coordinate x, Coordinate y, Coordinate z) {
 		super(x,y);
 		this.z=new Coordinate(z);
 	}
-	public pointD3(double x,double y,double z) {
+	public Point3D(double x, double y, double z) {
 		super(new Coordinate(x),new Coordinate(y));
 		this.z=new Coordinate(z);
 	}
-	public  pointD3(pointD3 p){
+	public Point3D(Point3D p){
 		super(p);
 		this.z=new Coordinate(p.z);
 	}
-	public pointD3() {
+	public Point3D() {
 		super();
 		this.z = new Coordinate(Coordinate.ZERO);
 	}
@@ -59,13 +58,13 @@ public class pointD3 extends pointD2 {
 		if (this == o) return true;
 		if (o == null || getClass() != o.getClass()) return false;
 		if (!super.equals(o)) return false;
-		pointD3 pointD3 = (pointD3) o;
-		return Objects.equals(z, pointD3.z) && super.equals(o);
+		Point3D Point3D = (Point3D) o;
+		return Objects.equals(z, Point3D.z) && super.equals(o);
 	}
 
 	@Override
 	public String toString() {
-		return "pointD3{" +
+		return "Point3D{" +
 				"x=" + x +
 				", y=" + y +
 				", z=" + z +
@@ -75,13 +74,13 @@ public class pointD3 extends pointD2 {
 	// ***************** Administration  ******************** //
 
 
-	public vector substract(pointD3 p){
+	public vector substract(Point3D p){
 		return new vector(this.ReturnSubbstractVector(p));
 	}
 
-	private vector ReturnSubbstractVector(pointD3 p){
+	private vector ReturnSubbstractVector(Point3D p){
 		return new vector(
-				new pointD3(
+				new Point3D(
 						this.getX().subtract(p.getX()),
 						this.getY().subtract(p.getY()),
 						this.getZ().subtract(p.getZ())
@@ -89,22 +88,22 @@ public class pointD3 extends pointD2 {
 		);
 	}
 	@Override
-	public pointD3 add(vector v){
-		return (new pointD3(
+	public Point3D add(vector v){
+		return (new Point3D(
 				this.getX().add(v.getPoint().getX()),
 				this.getY().add(v.getPoint().getY()),
 				this.getZ().add(v.getPoint().getZ())
 		));
 	}
 
-	public double powDistance(pointD3 p){
+	public double powDistance(Point3D p){
 		Coordinate x = (this.getX().subtract(p.getX())).multiply(this.getX().subtract(p.getX()));
 		Coordinate y = (this.getY().subtract(p.getY())).multiply(this.getY().subtract(p.getY()));
 		Coordinate z = (this.getZ().subtract(p.getZ())).multiply(this.getZ().subtract(p.getZ()));
 		return x.add(y.add(z)).get();
 	}
 
-	public  double distance(pointD3 p){
+	public  double distance(Point3D p){
 		return Math.sqrt(this.powDistance(p));
 	}
 

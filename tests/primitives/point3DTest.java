@@ -4,12 +4,12 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class pointD3Test {
+class point3DTest {
 
     @Test
     void distance() {
-        pointD3 a = new pointD3(1,2,3);
-        pointD3 b = new pointD3(2,3,4);
+        Point3D a = new Point3D(1,2,3);
+        Point3D b = new Point3D(2,3,4);
         double result =  a.distance(b);
         assertEquals(1.732051,result,0.000001);
     }
