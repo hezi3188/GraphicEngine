@@ -4,16 +4,22 @@ public class Material {
     double _Kd; //distance arg
     double _Ks; //distance arg
     int _nShininess; //mavhikut
+    double _kr;
+    double _kt;
 
-    public Material(double _Kd, double _Ks, int _nShininess) {
+    public Material(double _Kd, double _Ks, int _nShininess,double _kr,double _kt) {
         this._Kd = _Kd;
         this._Ks = _Ks;
         this._nShininess = _nShininess;
+        this._kr=_kr;
+        this._kt=_kt;
     }
     public Material(Material M) {
         this._Kd = M._Kd;
         this._Ks = M._Ks;
         this._nShininess = M._nShininess;
+        this._kr=M._kr;
+        this._kt=M._kt;
     }
 
     public double get_Ks() {

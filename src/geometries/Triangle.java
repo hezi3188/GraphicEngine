@@ -3,7 +3,7 @@ import primitives.*;
 
 import java.util.List;
 
-public class Triangle extends Geometry {
+public class Triangle extends Geometry implements FlatGeometry {
     protected Point3D a;
     protected Point3D b;
     protected Point3D c;

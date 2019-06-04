@@ -110,6 +110,7 @@ class RenderTestColor {
 
 
         Plane plane = new Plane(new Point3D(-100, 0 , 0),new vector(1,0,0), new Color(133, 133, 133));
+        plane.set_material(new Material(20,0.5,20,0,0));
         //plane.setMaterial(15, 0.1, 0.4, 0.2,1);
         //plane.setEmmission(new Color(133, 133, 133));
         scene.insertImage(plane);

@@ -33,6 +33,12 @@ public class Scene {
         this.image = s.getImage();
     }
 
+    public void addLight(LightSource light){
+        lights.add(light);
+    }
+
+
+
     public String getName() {
         return name;
     }

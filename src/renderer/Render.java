@@ -1,9 +1,7 @@
 package renderer;
 
 import elements.*;
-import geometries.Geometry;
-import geometries.Plane;
-import geometries.Triangle;
+import geometries.*;
 import primitives.Color;
 import primitives.Point3D;
 import primitives.ray;
@@ -36,7 +34,7 @@ public class Render {
                mapOfAllCut = IntersectionOnPixel(R);
                if (mapOfAllCut.size() > 0) {
                    entryClosePoint = getClosestPoint(mapOfAllCut);
-                   imageWriter.writePixel(i, y, this.calcColor(entryClosePoint.getKey(), entryClosePoint.getValue()));
+                   imageWriter.writePixel(i, y, this.calcColor(entryClosePoint.getKey(), entryClosePoint.getValue(),R));
                } else {
                    imageWriter.writePixel(i, y, this.Simulation.getBackColor());
                }
@@ -65,10 +63,19 @@ public class Render {
         Eps = Eps.multScalar(2);
         Point3D newPoint = point.add(Eps);
         ray Lightray = new ray(newPoint,lightDirect);
-        return IntersectionOnPixel(Lightray).isEmpty();
+        Map<Geometry,List<Point3D>>instractionPoints= IntersectionOnPixel(Lightray);
+        if(g instanceof FlatGeometry && instractionPoints != null && instractionPoints.size()>0) {
+            instractionPoints.remove(g);
+
+        }
+        return instractionPoints.isEmpty();
 
     }
-    private Color calcColor(Geometry g, Point3D p){
+    private Color calcColor(Geometry g,Point3D p,ray inRay){
+        return calcColor(g,p,inRay,0);
+    }
+    private Color calcColor(Geometry g, Point3D p,ray inRay,int level){
+        ray reflectedRay = constarctReflectRay(g.getNormal(p),p,inRay);
         /*Color ambientLight = Simulation.getFillLight().GetIntensity();
         Color emissionLight = g.getEmmission();
         Color IO = new Color(ambientLight.getColor().getRed() + emissionLight.getColor().getRed(),ambientLight.getColor().getGreen() + emissionLight.getColor().getGreen(),
@@ -129,6 +136,11 @@ public class Render {
         return new primitives.Color(amissionLight);*/
     }
 
+    private ray constarctReflectRay(vector ggetNormal,Point3D p,ray inRay){
+        vector R = ggetNormal.multScalar((new vector(inRay.getPoint())).dotProduct(ggetNormal)*-2).add(inRay);
+        return new ray(p,R);
+    }
+
     private Color calcSpecularComp(double ks, vector substract, vector normal, vector l, int nShininess, Color intensity) {
        normal = normal.normalize();
        l = l.normalize();
@@ -183,8 +195,8 @@ public class Render {
         if(imageWriter == null) return;
         for(int y=0;y<interval;y+=(interval/10))
             for(int i=0;i<interval;i++){
-                //imageWriter.writePixel(i,y,new primitives.Color(java.awt.Color.magenta));
-                //imageWriter.writePixel(y,i,new primitives.Color(java.awt.Color.magenta));
+                imageWriter.writePixel(i,y,new primitives.Color(java.awt.Color.magenta));
+                imageWriter.writePixel(y,i,new primitives.Color(java.awt.Color.magenta));
             }
     }
 }
