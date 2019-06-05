@@ -35,6 +35,8 @@ public class Render {
                R = OurCam.constructRayThroughPixel(img.getNx(), img.getNx(), i, y, distance, img.getWidth(), img.getHeight());
                mapOfAllCut = IntersectionOnPixel(R);
                if (mapOfAllCut.size() > 0) {
+                   if(y==7)
+                       y=7;
                    entryClosePoint = getClosestPoint(mapOfAllCut);
                    imageWriter.writePixel(i, y, this.calcColor(entryClosePoint.getKey(), entryClosePoint.getValue(),R));
                } else {
@@ -91,7 +93,7 @@ public class Render {
         }
 
         Color ambientLight = Simulation.getFillLight().GetIntensity().scale(0.2);;
-        Color emissionLight = g.getEmmission().scale(0.2);
+        Color emissionLight = g.getEmmission().scale(0.8);
         Color IO = new Color(ambientLight.getColor().getRed() + emissionLight.getColor().getRed(),ambientLight.getColor().getGreen() + emissionLight.getColor().getGreen(),
                 ambientLight.getColor().getBlue() + emissionLight.getColor().getBlue());
 
@@ -105,8 +107,10 @@ public class Render {
             }
         }
 
-
-        return IO.add(diffuseLight,specularLight,ReflectColor.scale(g.get_material().get_kr()));
+        Color O = IO.add(diffuseLight,specularLight,ReflectColor.scale(g.get_material().get_kr()));
+        if(O.getColor().getBlue() == 0)
+            O.getColor();
+        return O;
         /*Color a;
         Color amissionLight=new Color(0,0,0);//=g.getEmmission();
         if(this.Simulation.getLight() != null && this.Simulation.getLight().size()>0) {
@@ -168,6 +172,7 @@ public class Render {
 
     private Color calcDiffusiveComp(double kd, vector normal, vector l, Color intensity) {
         double Cos = -normal.normalize().dotProduct(l.normalize());
+        Cos = Math.abs(Cos); /// must for tangle probbly if normal  oposite
         Cos = Math.max(0,Cos);
         double pwr = kd*Cos;
         Color Dif = intensity.scale(pwr);

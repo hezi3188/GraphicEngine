@@ -33,8 +33,9 @@ public class Quad  extends Geometry  {
     }
     @Override
     public vector getNormal(Point3D a) {
-        Plane x1 = new Plane(plane.getB(),plane.getA(),plane.getC(),new Color(java.awt.Color.white));
-        if(x1.IfPointOnP(a)) return x1.getNormal(null);
+        Plane x1 = new Plane(plane.getA(),plane.getB(),plane.getC(),new Color(java.awt.Color.white));
+        if(x1.IfPointOnP(a))
+            return x1.getNormal(null);
         Plane x2 = new Plane(plane2.getB(),plane2.getA(),plane2.getC(),new Color(java.awt.Color.white));
         if(x2.IfPointOnP(a)) return x2.getNormal(null);
         return null;
