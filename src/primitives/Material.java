@@ -14,6 +14,23 @@ public class Material {
         this._kr=_kr;
         this._kt=_kt;
     }
+
+    public double get_kr() {
+        return _kr;
+    }
+
+    public void set_kr(double _kr) {
+        this._kr = _kr;
+    }
+
+    public double get_kt() {
+        return _kt;
+    }
+
+    public void set_kt(double _kt) {
+        this._kt = _kt;
+    }
+
     public Material(Material M) {
         this._Kd = M._Kd;
         this._Ks = M._Ks;

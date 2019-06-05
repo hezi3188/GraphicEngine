@@ -29,6 +29,8 @@ public class Render {
         Point3D CloseP;
        this.imageWriter = new ImageWriter(img);
        for(int i=0;i<img.getNx();i++) {
+           if(i%(img.getNx()/100) == 0)
+               System.out.println((double) 100*i/img.getNx()+"%   ");
            for (int y = 0; y < img.getNy(); y++) {
                R = OurCam.constructRayThroughPixel(img.getNx(), img.getNx(), i, y, distance, img.getWidth(), img.getHeight());
                mapOfAllCut = IntersectionOnPixel(R);
@@ -84,8 +86,7 @@ public class Render {
             Map<Geometry, List<Point3D>> x = IntersectionOnPixel(reflectedRay);
             if (x.size() > 0) {
                 Map.Entry<Geometry, Point3D> entryClosePoint = getClosestPoint(x);
-                ReflectColor.add(this.calcColor(entryClosePoint.getKey(), entryClosePoint.getValue(), reflectedRay, level + 1));
-                System.out.println(ReflectColor);
+                ReflectColor = ReflectColor.add(this.calcColor(entryClosePoint.getKey(), entryClosePoint.getValue(), reflectedRay, level + 1));
             }
         }
 
@@ -105,7 +106,7 @@ public class Render {
         }
 
 
-        return IO.add(diffuseLight,specularLight,ReflectColor);
+        return IO.add(diffuseLight,specularLight,ReflectColor.scale(g.get_material().get_kr()));
         /*Color a;
         Color amissionLight=new Color(0,0,0);//=g.getEmmission();
         if(this.Simulation.getLight() != null && this.Simulation.getLight().size()>0) {

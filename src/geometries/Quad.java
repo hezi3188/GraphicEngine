@@ -4,7 +4,7 @@ import primitives.*;
 
 import java.util.List;
 
-public class Quad  extends Geometry implements FlatGeometry  {
+public class Quad  extends Geometry  {
     Point3D TopRight;
     Point3D TopLeft;
     Point3D BottumRight;

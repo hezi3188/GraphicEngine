@@ -108,19 +108,24 @@ class RenderTestColor {
     @Test
     public void qube(){
         Scene scene = new Scene("");
-        scene.setCamAndDis(new Camera(new Point3D(0, 0, 0), new vector(0, 0, -1), new vector(0, 1, 0)), 150);
+        scene.setCamAndDis(new Camera(new Point3D(0, 0, 0), new vector(0, 0, -1), new vector(0, 1, 0)), 180);
         scene.setFillLight(new AmbientLight(new Color(120,120,120),0.5));
         Point3D TopRight = new Point3D(-200,200,-150);
         double width = 300;
         double height = 300;
         double dip =300;
 
-        Quad a = new Quad(TopRight.add(new vector(width,0,100)),TopRight.add(new vector(width,0,-100)),TopRight.add(new vector(0,-height,-100)),TopRight.add(new vector(width,-height,0)),new Color(255,0,0));
+        Quad a = new Quad(TopRight.add(new vector(width/2,0,20)),TopRight.add(new vector(width,0,-100)),TopRight.add(new vector(0,-height,-100)),TopRight.add(new vector(width,-height,0)),new Color(255,0,0));
+        Material temp = a.get_material();
+        temp.set_kr(0.7);
+        a.set_material(temp);
         scene.insertImage(a);
-        Sphere b = new Sphere(50,new Point3D(-50,50,-200),new Color(255,255,255));
+        Sphere b = new Sphere(20,new Point3D(-50,50,-200),new Color(255,255,255));
         scene.insertImage(b);
-        PointLight Li = new PointLight(new Color(0,120,120),new Point3D(-100,100,-100),1,0.01,0.00001);
+        PointLight Li = new PointLight(new Color(0,120,120),new Point3D(-100,100,100),1,0.1,0.00001);
         scene.insertLight(Li);
+        SpotLight Li2 = new SpotLight(new Color(0,120,120),TopRight.add(new vector(width,-height,0)),1,0.001,0.00001,new Point3D(-50,40,-280).substract(TopRight.add(new vector(width,-height,0))));
+        scene.insertLight(Li2);
         ImageWriter imageWriter = new ImageWriter("testPart3_qu", 500, 500, 500, 500);
         Render render = new Render(scene);
         render.renderImage(imageWriter);
