@@ -76,12 +76,12 @@ public class Render {
     }
     private Color calcColor(Geometry g, Point3D p,ray inRay,int level){
         ray reflectedRay = constarctReflectRay(g.getNormal(p),p,inRay);
-        /*Color ambientLight = Simulation.getFillLight().GetIntensity();
-        Color emissionLight = g.getEmmission();
+        Color ambientLight = Simulation.getFillLight().GetIntensity().scale(0.2);;
+        Color emissionLight = g.getEmmission().scale(0.2);
         Color IO = new Color(ambientLight.getColor().getRed() + emissionLight.getColor().getRed(),ambientLight.getColor().getGreen() + emissionLight.getColor().getGreen(),
-                ambientLight.getColor().getBlue() + emissionLight.getColor().getBlue());*/
+                ambientLight.getColor().getBlue() + emissionLight.getColor().getBlue());
 
-        Color IO = new Color(0,0,0);
+        //Color IO = new Color(0,0,0);
         Color diffuseLight = new Color(0,0,0);
         Color specularLight = new Color(0,0,0);
         for (LightSource x : Simulation.getLight()) {

@@ -2,6 +2,7 @@ package renderer;
 
 import elements.*;
 import geometries.Plane;
+import geometries.Quad;
 import geometries.Sphere;
 import geometries.Triangle;
 import org.junit.jupiter.api.Test;
@@ -85,6 +86,44 @@ class RenderTestColor {
 
     }
     @Test
+    public void testPlane(){
+        for(int i=10;i<50;i+=10) {
+            Scene scene = new Scene("");
+            //scene.setDis(150);
+            scene.setCamAndDis(new Camera(new Point3D(0, 0, 0), new vector(0, 0, -1), new vector(0, 1, 0)), 150);
+
+            //Plane plane = new Plane(new Point3D(-100, i*10, i*10), new vector(1, 0, 0), new Color(133, 133, 133));
+            Triangle plane = new Triangle(new Point3D(i*10, i*10, -150-(i*10)),new Point3D(-i*10, -i*10, -150-(i*2)),new Point3D(-i*10, i*10, -150-(i*10)), new Color(133, 133, 133));
+            scene.insertImage(plane);
+            Triangle plane2 = new Triangle(new Point3D(i*10, i*10, -150-(i*10)),new Point3D(-i*10, -i*10, -150-(i*2)),new Point3D(i*10, -i*10, -150-(i*10)), new Color(133, 133, 133));
+            scene.insertImage(plane2);
+
+
+            ImageWriter imageWriter = new ImageWriter("testPart3_02"+i, 500, 500, 500, 500);
+            Render render = new Render(scene);
+            render.renderImage(imageWriter);
+        }
+
+    }
+    @Test
+    public void qube(){
+        Scene scene = new Scene("");
+        scene.setCamAndDis(new Camera(new Point3D(0, 0, 0), new vector(0, 0, -1), new vector(0, 1, 0)), 150);
+        scene.setFillLight(new AmbientLight(new Color(120,120,120),0.5));
+        Point3D TopRight = new Point3D(-200,200,-150);
+        double width = 300;
+        double height = 300;
+        double dip =300;
+
+        Quad a = new Quad(TopRight,300,300,new Color(255,0,0));
+        scene.insertImage(a);
+        PointLight Li = new PointLight(new Color(0,120,120),new Point3D(-200,200,-130),1,0.001,0.00001);
+        scene.insertLight(Li);
+        ImageWriter imageWriter = new ImageWriter("testPart3_qu", 500, 500, 500, 500);
+        Render render = new Render(scene);
+        render.renderImage(imageWriter);
+    }
+    @Test
     public void test5(){
         Scene scene = new Scene("");
         //scene.setDis(150);
@@ -125,9 +164,7 @@ class RenderTestColor {
 
 
         ImageWriter imageWriter = new ImageWriter("testPart3_02", 500, 500, 500, 500);
-
         Render render = new Render(scene);
-
         render.renderImage(imageWriter);
         //render.writeToImage();
     }
