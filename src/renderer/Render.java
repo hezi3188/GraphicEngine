@@ -58,7 +58,7 @@ public class Render {
         return MapGeo;
     }
     private boolean occluded(LightSource L, Point3D point, Geometry g){
-        vector lightDirect = L.getL(point).multScalar(-1);
+        vector lightDirect = L.getL(point).multScalar(-1).normalize();
         vector Eps = new vector(g.getNormal(point).normalize());
         Eps = Eps.multScalar(2);
         Point3D newPoint = point.add(Eps);
@@ -75,7 +75,20 @@ public class Render {
         return calcColor(g,p,inRay,0);
     }
     private Color calcColor(Geometry g, Point3D p,ray inRay,int level){
-        ray reflectedRay = constarctReflectRay(g.getNormal(p),p,inRay);
+        if(g instanceof Sphere && level==0){
+            g.get_material();
+        }
+        Color ReflectColor = new Color(0,0,0);
+        if(level < 1) {
+            ray reflectedRay = constarctReflectRay(g.getNormal(p), p, inRay);
+            Map<Geometry, List<Point3D>> x = IntersectionOnPixel(reflectedRay);
+            if (x.size() > 0) {
+                Map.Entry<Geometry, Point3D> entryClosePoint = getClosestPoint(x);
+                ReflectColor.add(this.calcColor(entryClosePoint.getKey(), entryClosePoint.getValue(), reflectedRay, level + 1));
+                System.out.println(ReflectColor);
+            }
+        }
+
         Color ambientLight = Simulation.getFillLight().GetIntensity().scale(0.2);;
         Color emissionLight = g.getEmmission().scale(0.2);
         Color IO = new Color(ambientLight.getColor().getRed() + emissionLight.getColor().getRed(),ambientLight.getColor().getGreen() + emissionLight.getColor().getGreen(),
@@ -92,7 +105,7 @@ public class Render {
         }
 
 
-        return IO.add(diffuseLight,specularLight);
+        return IO.add(diffuseLight,specularLight,ReflectColor);
         /*Color a;
         Color amissionLight=new Color(0,0,0);//=g.getEmmission();
         if(this.Simulation.getLight() != null && this.Simulation.getLight().size()>0) {

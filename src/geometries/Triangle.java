@@ -47,8 +47,10 @@ public class Triangle extends Geometry implements FlatGeometry {
         double num1 = P.substract(R.getStart()).dotProduct(N1);
         double num2 = P.substract(R.getStart()).dotProduct(N2);
         double num3 = P.substract(R.getStart()).dotProduct(N3);
-        if(num1>0 && num2>0 && num3 >0) return cut;
-        if(num1<0 && num2<0 && num3 <0) return cut;
+        if(num1>0 && num2>0 && num3 >0)
+            return cut;
+        if(num1<0 && num2<0 && num3 <0)
+            return cut;
         return null;
     }
     @Override

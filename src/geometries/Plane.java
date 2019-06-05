@@ -57,7 +57,7 @@ public class Plane extends Geometry implements FlatGeometry {
         Coordinate Z = getCross().getPoint().getZ().multiply(p.getZ());
         getZofPlane();
         Coordinate SumOFNumbers = X.add(Y.add(Z.add(getZofPlane())));
-         return SumOFNumbers.get() == 0;
+         return SumOFNumbers.get() < 0.001 && SumOFNumbers.get() > -0.001 ;
     }
     @Override
     public List<Point3D> findIntersections(ray R) {
