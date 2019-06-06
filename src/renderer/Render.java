@@ -23,7 +23,7 @@ public class Render {
         Camera OurCam = this.Simulation.getCam();
         double distance = this.Simulation.getDisToScreen();
         String name = this.Simulation.getName();
-        ray R;
+        List<ray> RR;
         Map<Geometry,List<Point3D>> mapOfAllCut;
         Map.Entry<Geometry, Point3D> entryClosePoint = null;
         Point3D CloseP;
@@ -32,16 +32,23 @@ public class Render {
            if(i%(img.getNx()/100) == 0)
                System.out.println((double) 100*i/img.getNx()+"%   ");
            for (int y = 0; y < img.getNy(); y++) {
-               R = OurCam.constructRayThroughPixel(img.getNx(), img.getNx(), i, y, distance, img.getWidth(), img.getHeight());
-               mapOfAllCut = IntersectionOnPixel(R);
-               if (mapOfAllCut.size() > 0) {
-                   if(y==7)
-                       y=7;
-                   entryClosePoint = getClosestPoint(mapOfAllCut);
-                   imageWriter.writePixel(i, y, this.calcColor(entryClosePoint.getKey(), entryClosePoint.getValue(),R));
-               } else {
-                   imageWriter.writePixel(i, y, this.Simulation.getBackColor());
+               boolean Flag = false;
+               Color PixColor = new Color(0,0,0);
+               RR = OurCam.constructRaysThroughPixel(img.getNx(), img.getNx(), i, y, distance, img.getWidth(), img.getHeight(),100,1);
+
+               for (ray R: RR) {
+                   mapOfAllCut = IntersectionOnPixel(R);
+                   if (mapOfAllCut.size() > 0) {
+                       Flag = true;
+                       entryClosePoint = getClosestPoint(mapOfAllCut);
+                       PixColor = PixColor.add(this.calcColor(entryClosePoint.getKey(), entryClosePoint.getValue(), R).scale((double)1/RR.size()));
+                   }
                }
+
+               if(Flag)
+                   imageWriter.writePixel(i, y, PixColor);
+               else
+                   imageWriter.writePixel(i, y, this.Simulation.getBackColor());
                //CloseP = this.getClosestPoint(Simulation.getImage().get(0).findIntersections(R));
                //if(CloseP != null){
                //   imageWriter.writePixel(i,y,this.calcColor(CloseP));

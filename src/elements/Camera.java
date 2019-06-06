@@ -4,6 +4,9 @@ import primitives.Point3D;
 import primitives.ray;
 import primitives.vector;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Camera {
     protected Point3D position;
     protected vector CamFront;
@@ -57,9 +60,64 @@ public class Camera {
         // need substract from point, so change direction of vector
         Point3D YXonPlane = TopLeftOfPlane.add(CamUp.multScalar(CenterFromTopPixelY*(-1))).add(CamLeft.multScalar(CenterFromLeftPixelX*(-1)));
 
+
+
         return new ray(position,YXonPlane.substract(position).normalize());
     }
+    public List<ray> constructRaysThroughPixel(int pixelsX, int pixelsY,
+                                        double Rx, double Rj,
+                                        double distance,
+                                        double width, double height,double FoucsDis, double Sribua){
+        double distanceX=width/pixelsX;
+        double distanceY=height/pixelsY;
+        double FromLeftPixelXNotUse = distanceX*Rx;
+        double FromTopPixelYNotUse = distanceY*Rj;
+        double CenterFromLeftPixelX = FromLeftPixelXNotUse + (distanceX/2);
+        double CenterFromTopPixelY = FromTopPixelYNotUse + (distanceY/2);
 
+        Point3D centerPlane = position.add(CamFront.multScalar(distance));
+        vector PlaneTop = CamUp.multScalar(height);
+        vector PlaneLeft = CamLeft.multScalar(width);
+
+        Point3D TopOfPlane = centerPlane.add(PlaneTop.multScalar(0.5));
+        Point3D TopLeftOfPlane = TopOfPlane.add(PlaneLeft.multScalar(0.5));
+
+        // need substract from point, so change direction of vector
+        Point3D YXonPlane = TopLeftOfPlane.add(CamUp.multScalar(CenterFromTopPixelY*(-1))).add(CamLeft.multScalar(CenterFromLeftPixelX*(-1)));
+
+
+
+        new ray(position,YXonPlane.substract(position).normalize());
+
+        return GetFocus(FoucsDis,Sribua,YXonPlane,YXonPlane.substract(position).normalize());
+
+    }
+
+    public List<ray> GetFocus(double FoucsDis, double Sribua, Point3D YXonPlane, vector FromCam){
+        List<ray> rays =new ArrayList<>();
+        if(true) { // for spear time
+            rays.add(new ray(position,YXonPlane.substract(position).normalize()));
+            return rays;
+        }
+
+        Point3D PointF = YXonPlane.add(FromCam.multScalar(FoucsDis));
+        Point3D PL1 = YXonPlane.add(CamUp.multScalar(Sribua/2)).add(CamLeft.multScalar(Sribua/2));
+        Point3D PL2 = YXonPlane.add(CamUp.multScalar(Sribua/2)).add(CamLeft.multScalar(-Sribua/2));
+        Point3D PL3 = YXonPlane.add(CamUp.multScalar(-Sribua/2)).add(CamLeft.multScalar(-Sribua/2));
+        Point3D PL4 = YXonPlane.add(CamUp.multScalar(-Sribua/2)).add(CamLeft.multScalar(Sribua/2));
+
+        ray L1 = new ray(position,PointF.substract(PL1).normalize());
+        ray L2 = new ray(position,PointF.substract(PL2).normalize());
+        ray L3 = new ray(position,PointF.substract(PL3).normalize());
+        ray L4 = new ray(position,PointF.substract(PL4).normalize());
+
+        rays.add(L1);
+        rays.add(L2);
+        rays.add(L3);
+        rays.add(L4);
+
+        return rays;
+    }
     /*Getters and Setters*/
 
     public Point3D getPosition() {
