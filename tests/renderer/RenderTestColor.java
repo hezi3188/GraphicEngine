@@ -188,6 +188,7 @@ class RenderTestColor {
         scene.setCamAndDis(new Camera(new Point3D(0,0,0),new vector(0,0,-1),new vector(1,0,0)),200);
 
         Sphere sphere = new Sphere(500, new Point3D(0.0, 0.0, -1000),new Color(0, 0, 100));
+        //sphere.set_material(new Material(1));
         //sphere.setEmmission(new Color(0, 0, 100));
         //Material m=new Material();
         //sphere.setShininess(20);

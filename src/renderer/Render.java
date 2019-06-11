@@ -85,6 +85,7 @@ public class Render {
     private Color calcColor(Geometry g,Point3D p,ray inRay){
         return calcColor(g,p,inRay,0);
     }
+
     private Color calcColor(Geometry g, Point3D p,ray inRay,int level){
         if(g instanceof Sphere && level==0){
             g.get_material();
@@ -98,6 +99,21 @@ public class Render {
                 ReflectColor = ReflectColor.add(this.calcColor(entryClosePoint.getKey(), entryClosePoint.getValue(), reflectedRay, level + 1));
             }
         }
+
+
+
+
+
+        Color RefractedColor = new Color(0,0,0);
+        if(level < 1) {
+            ray RefractedRay = constarctReftractedRay(g.getNormal(p), p, inRay);
+            Map<Geometry, List<Point3D>> x = IntersectionOnPixel(RefractedRay);
+            if (x.size() > 0) {
+                Map.Entry<Geometry, Point3D> entryClosePoint = getClosestPoint(x);
+                RefractedColor = RefractedColor.add(this.calcColor(entryClosePoint.getKey(), entryClosePoint.getValue(), RefractedRay, level + 1));
+            }
+        }
+
 
         Color ambientLight = Simulation.getFillLight().GetIntensity().scale(0.2);;
         Color emissionLight = g.getEmmission().scale(0.8);
@@ -114,7 +130,7 @@ public class Render {
             }
         }
 
-        Color O = IO.add(diffuseLight,specularLight,ReflectColor.scale(g.get_material().get_kr()));
+        Color O = IO.add(diffuseLight,specularLight,ReflectColor.scale(g.get_material().get_kr()),RefractedColor.scale(g.get_material().get_kt()));
         if(O.getColor().getBlue() == 0)
             O.getColor();
         return O;
@@ -164,6 +180,10 @@ public class Render {
     private ray constarctReflectRay(vector ggetNormal,Point3D p,ray inRay){
         vector R = ggetNormal.multScalar((new vector(inRay.getPoint())).dotProduct(ggetNormal)*-2).add(inRay);
         return new ray(p,R);
+    }
+
+    private ray constarctReftractedRay(vector ggetNormal,Point3D p,ray inRay){
+        return new ray(p,(vector)inRay);//now a simple בcalculation
     }
 
     private Color calcSpecularComp(double ks, vector substract, vector normal, vector l, int nShininess, Color intensity) {
