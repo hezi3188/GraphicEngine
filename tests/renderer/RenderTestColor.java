@@ -16,7 +16,7 @@ class RenderTestColor {
     {
         Scene scene = new Scene("");
 
-        scene.insertImage(new Sphere(100, new Point3D(0.0, 0.0, -150), new Color(java.awt.Color.red)));
+        scene.insertImage(new Sphere(100, new Point3D(0.0, 0.0, -150), new Color(java.awt.Color.red),new Material(0,0,0,0,0)));
 
         //scene.setFillLight(new AmbientLight(new Color(java.awt.Color.white), 0.2));
         //scene.insertLight(new PointLight(new Color(255,255,255),new Point3D(0.0, 0.0, -20),1,0.001,0.001));
@@ -41,8 +41,8 @@ class RenderTestColor {
     {
         Scene scene = new Scene("");
 
-        scene.insertImage(new Sphere(170, new Point3D(0.0, 0.0, -250), new Color(java.awt.Color.RED)));
-        scene.insertImage(new Triangle(new Point3D(100,100,-50),new Point3D(50,50,-50),new Point3D(50,75,-50), new Color(java.awt.Color.RED)));
+        scene.insertImage(new Sphere(170, new Point3D(0.0, 0.0, -250), new Color(java.awt.Color.RED),new Material(0,0,0,0,0)));
+        scene.insertImage(new Triangle(new Point3D(100,100,-50),new Point3D(50,50,-50),new Point3D(50,75,-50), new Color(java.awt.Color.RED),new Material(0,0,0,0,0)));
 
         /*scene.insertImage(new Sphere(50, new Point3D(-70.0, 70.0, -150), new Color(java.awt.Color.RED)));
         scene.insertImage(new Sphere(30, new Point3D(70, 70, -50), new Color(java.awt.Color.RED)));
@@ -93,9 +93,9 @@ class RenderTestColor {
             scene.setCamAndDis(new Camera(new Point3D(0, 0, 0), new vector(0, 0, -1), new vector(0, 1, 0)), 150);
 
             //Plane plane = new Plane(new Point3D(-100, i*10, i*10), new vector(1, 0, 0), new Color(133, 133, 133));
-            Triangle plane = new Triangle(new Point3D(i*10, i*10, -150-(i*10)),new Point3D(-i*10, -i*10, -150-(i*2)),new Point3D(-i*10, i*10, -150-(i*10)), new Color(133, 133, 133));
+            Triangle plane = new Triangle(new Point3D(i*10, i*10, -150-(i*10)),new Point3D(-i*10, -i*10, -150-(i*2)),new Point3D(-i*10, i*10, -150-(i*10)), new Color(133, 133, 133),new Material(0,0,0,0,0));
             scene.insertImage(plane);
-            Triangle plane2 = new Triangle(new Point3D(i*10, i*10, -150-(i*10)),new Point3D(-i*10, -i*10, -150-(i*2)),new Point3D(i*10, -i*10, -150-(i*10)), new Color(133, 133, 133));
+            Triangle plane2 = new Triangle(new Point3D(i*10, i*10, -150-(i*10)),new Point3D(-i*10, -i*10, -150-(i*2)),new Point3D(i*10, -i*10, -150-(i*10)), new Color(133, 133, 133),new Material(0,0,0,0,0));
             scene.insertImage(plane2);
 
 
@@ -121,7 +121,7 @@ class RenderTestColor {
         temp.set_kr(0.5);
         a.set_material(temp);
         scene.insertImage(a);
-        Sphere b = new Sphere(30,new Point3D(-50,50,-160),new Color(0,255,0));
+        Sphere b = new Sphere(30,new Point3D(-50,50,-160),new Color(0,255,0),new Material(0,0,0,0,0));
         scene.insertImage(b);
         PointLight Li = new PointLight(new Color(0,120,120),new Point3D(0,100,100),1,0.005,0.00001);
         scene.insertLight(Li);
@@ -143,19 +143,19 @@ class RenderTestColor {
         scene.setCamAndDis(new Camera(new Point3D(0,0,0),new vector(0,0,-1),new vector(1,0,0)),150);
         //Material material = new Material(19, 0.4, 0.2);
         Point3D pSphere = new Point3D(-50, -100, -150);
-        Sphere sphere = new Sphere(50, pSphere,new Color(10, 100, 20));
+        Sphere sphere = new Sphere(50, pSphere,new Color(10, 100, 20),new Material(0,0,0,0,0));
         //sphere.setEmmission();
         //sphere.setMaterial(material);
         scene.insertImage(sphere);
 
         Point3D pSphere1 = new Point3D(-30, 0, -250);
-        Sphere sphere1 = new Sphere(70,pSphere1,new Color(110, 20, 10));
+        Sphere sphere1 = new Sphere(70,pSphere1,new Color(110, 20, 10),new Material(0,0,0,0,0));
         //sphere1.setEmmission(new Color(110, 20, 10));
         //sphere1.setMaterial(material);
         scene.insertImage(sphere1);
 
         Point3D pSphere2 = new Point3D(-10, 150, -350);
-        Sphere sphere2 = new Sphere(90,pSphere2,new Color(20, 20, 100) );
+        Sphere sphere2 = new Sphere(90,pSphere2,new Color(20, 20, 100) ,new Material(0,0,0,0,0));
         /*sphere2.setEmmission(new Color(20, 20, 100));
         sphere2.setMaterial(material);*/
         scene.insertImage(sphere2);
@@ -187,7 +187,7 @@ class RenderTestColor {
         Scene scene = new Scene("");
         scene.setCamAndDis(new Camera(new Point3D(0,0,0),new vector(0,0,-1),new vector(1,0,0)),200);
 
-        Sphere sphere = new Sphere(500, new Point3D(0.0, 0.0, -1000),new Color(0, 0, 100));
+        Sphere sphere = new Sphere(500, new Point3D(0.0, 0.0, -1000),new Color(0, 0, 100),new Material(0,0,0,0,0));
         //sphere.set_material(new Material(1));
         //sphere.setEmmission(new Color(0, 0, 100));
         //Material m=new Material();
@@ -197,7 +197,7 @@ class RenderTestColor {
 
         Triangle triangle = new Triangle(new Point3D(-125, -225, -260),
                 new Point3D(-225, -125, -260),
-                new Point3D(-225, -225, -270),new Color (0, 0, 100));
+                new Point3D(-225, -225, -270),new Color (0, 0, 100),new Material(0,0,0,0,0));
         //triangle.setEmmission(new Color (0, 0, 100));
 
         //Material m1=new Material();
@@ -251,27 +251,27 @@ class RenderTestColor {
 
 
 
-        s = new Sphere(70, new Point3D(new Coordinate(80), new Coordinate(0), new Coordinate(120)),new Color(0,0,0));
+        s = new Sphere(70, new Point3D(new Coordinate(80), new Coordinate(0), new Coordinate(120)),new Color(0,0,0),new Material(0,0,0,0,0));
         //s.setMaterial(new Material(0.05,1,1,0,15));
         getScene.insertImage(s);
 
-        s = new Sphere(30, new Point3D(new Coordinate(60), new Coordinate(0), new Coordinate(0)),new Color(75,0,25));
+        s = new Sphere(30, new Point3D(new Coordinate(60), new Coordinate(0), new Coordinate(0)),new Color(75,0,25),new Material(0,0,0,0,0));
         //s.setMaterial(new Material(0.2,1,1,0,15));
         getScene.insertImage(s);
 
-        s = new Sphere(800, new Point3D(new Coordinate(60), new Coordinate(-900), new Coordinate(0)),new Color(0,0,0));
+        s = new Sphere(800, new Point3D(new Coordinate(60), new Coordinate(-900), new Coordinate(0)),new Color(0,0,0),new Material(0,0,0,0,0));
         //s.setMaterial(new Material(0.1,1,1,0,15));
         getScene.insertImage(s);
 
-        s = new Sphere(800, new Point3D(new Coordinate(60), new Coordinate(900), new Coordinate(0)),new Color(0,0,0));
+        s = new Sphere(800, new Point3D(new Coordinate(60), new Coordinate(900), new Coordinate(0)),new Color(0,0,0),new Material(0,0,0,0,0));
         //s.setMaterial(new Material(0.1,1,1,0,15));
         getScene.insertImage(s);
 
 
-        getScene.insertImage(new Plane(new Point3D(new Coordinate(250), new Coordinate(-200), new Coordinate(-150)),new Point3D(new Coordinate(250), new Coordinate(200), new Coordinate(-150)),new Point3D(new Coordinate(250), new Coordinate(-200), new Coordinate(200)),new Color(15,15,15)));
+        getScene.insertImage(new Plane(new Point3D(new Coordinate(250), new Coordinate(-200), new Coordinate(-150)),new Point3D(new Coordinate(250), new Coordinate(200), new Coordinate(-150)),new Point3D(new Coordinate(250), new Coordinate(-200), new Coordinate(200)),new Color(15,15,15),new Material(0,0,0,0,0)));
 
-        getScene.insertImage(new Triangle(new Point3D(new Coordinate(-5000), new Coordinate(-200), new Coordinate(-70)),new Point3D(new Coordinate(150), new Coordinate(200), new Coordinate(-70)),new Point3D(new Coordinate(150), new Coordinate(-200), new Coordinate(-70)),new Color(7,7,7)));
-        getScene.insertImage(new Triangle(new Point3D(new Coordinate(-5000), new Coordinate(200), new Coordinate(-70)),new Point3D(new Coordinate(150), new Coordinate(200), new Coordinate(-70)),new Point3D(new Coordinate(-5000), new Coordinate(-200), new Coordinate(-70)),new Color(7,7,7)));
+        getScene.insertImage(new Triangle(new Point3D(new Coordinate(-5000), new Coordinate(-200), new Coordinate(-70)),new Point3D(new Coordinate(150), new Coordinate(200), new Coordinate(-70)),new Point3D(new Coordinate(150), new Coordinate(-200), new Coordinate(-70)),new Color(7,7,7),new Material(0,0,0,0,0)));
+        getScene.insertImage(new Triangle(new Point3D(new Coordinate(-5000), new Coordinate(200), new Coordinate(-70)),new Point3D(new Coordinate(150), new Coordinate(200), new Coordinate(-70)),new Point3D(new Coordinate(-5000), new Coordinate(-200), new Coordinate(-70)),new Color(7,7,7),new Material(0,0,0,0,0)));
 
         getScene.setFillLight(new AmbientLight(new Color(0,0,0), 0));
         Render renderer = new Render(getScene);
@@ -292,16 +292,16 @@ class RenderTestColor {
     public void qubee(){
         Scene scene = new Scene("");
         //scene.setBackColor(new Color(java.awt.Color.white));
-        scene.setCamAndDis(new Camera(new Point3D(0, 0, 0), new vector(-2, 0, -7), new vector(0, 1, 0)), 100);
+        scene.setCamAndDis(new Camera(new Point3D(0, 2, 0), new vector(-2, 0, -7), new vector(0, 1, 0)), 100);
         scene.setFillLight(new AmbientLight(new Color(0,0,0),0.2));
         Point3D TopRight = new Point3D(-200,200,-150);
         double width = 300;
         double height = 300;
         double dip =300;
 
-        Sphere a = new Sphere(100,new Point3D(-50,50,-150),new Color(255,255,100));
+        Sphere a = new Sphere(100,new Point3D(-50,50,-150),new Color(255,255,100),new Material(0,0,1,0.5,0.8));
 
-        Sphere b = new Sphere(70,new Point3D(-50,50,-150),new Color(0,255,0));
+        Sphere b = new Sphere(70,new Point3D(-50,50,-150),new Color(0,255,0),new Material(0,0,0,0,0.8));
         scene.insertImage(a);
         scene.insertImage(b);
         PointLight Li = new PointLight(new Color(0,120,120),new Point3D(-50,50,-100),1,0.005,0.00001);

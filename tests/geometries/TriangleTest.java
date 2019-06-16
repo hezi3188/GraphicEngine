@@ -1,10 +1,7 @@
 package geometries;
 
 import org.junit.jupiter.api.Test;
-import primitives.Color;
-import primitives.Point3D;
-import primitives.ray;
-import primitives.vector;
+import primitives.*;
 
 import java.util.List;
 
@@ -13,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class TriangleTest {
     @Test
     void Koko() {
-        Triangle T=new Triangle(new Point3D(0,1,-2),new Point3D(-1,-1,-2),new Point3D(1,-1,-2),new Color(java.awt.Color.BLACK));
+        Triangle T=new Triangle(new Point3D(0,1,-2),new Point3D(-1,-1,-2),new Point3D(1,-1,-2),new Color(java.awt.Color.BLACK),new Material(0,0,0,0,0));
         assertEquals(T.getNormal(null).toString(),"");
     }
     @Test
@@ -22,7 +19,7 @@ class TriangleTest {
         Point3D p2 = new Point3D(1,1,1);
         Point3D p3 = new Point3D(0,1,1);
 
-        Triangle P = new Triangle(p1,p2,p3,new Color(java.awt.Color.CYAN));
+        Triangle P = new Triangle(p1,p2,p3,new Color(java.awt.Color.CYAN),new Material(0,0,0,0,0));
 
         ray R = new ray(new Point3D(0,0,0),new vector(0.1,1,0.5));
         List<Point3D> C =P.findIntersections(R);
