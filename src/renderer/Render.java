@@ -101,11 +101,8 @@ public class Render {
         }
 
 
-
-
-
         Color RefractedColor = new Color(0,0,0);
-        if(level < 1) {
+        if(level < 2) {
             ray RefractedRay = constarctReftractedRay(g.getNormal(p), p, inRay);
             Map<Geometry, List<Point3D>> x = IntersectionOnPixel(RefractedRay);
             if (x.size() > 0) {
@@ -183,7 +180,10 @@ public class Render {
     }
 
     private ray constarctReftractedRay(vector ggetNormal,Point3D p,ray inRay){
-        return new ray(p,(vector)inRay);//now a simple בcalculation
+        vector temp=new vector((vector)inRay.normalize());
+        Point3D point=new Point3D(p);
+        point.add(temp);
+        return new ray(point,(vector)inRay);
     }
 
     private Color calcSpecularComp(double ks, vector substract, vector normal, vector l, int nShininess, Color intensity) {

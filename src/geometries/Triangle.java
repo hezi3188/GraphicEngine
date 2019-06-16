@@ -8,8 +8,8 @@ public class Triangle extends Geometry implements FlatGeometry {
     protected Point3D b;
     protected Point3D c;
 
-    public Triangle(Point3D a, Point3D b, Point3D c, Color color) {
-        super(color);
+    public Triangle(Point3D a, Point3D b, Point3D c, Color color,Material m) {
+        super(color,m);
          this.a = new Point3D(a);
         this.b = new Point3D(b);
         this.c = new Point3D(c);
@@ -34,7 +34,7 @@ public class Triangle extends Geometry implements FlatGeometry {
         return new Point3D(c);
     }
     public List<Point3D> findIntersections(ray R) {
-        Plane plane = new Plane(a,b,c,this.getEmmission());
+        Plane plane = new Plane(a,b,c,this.getEmmission(),null);
         List<Point3D> cut = plane.findIntersections(R);
         if(cut == null) return null;
         Point3D P = cut.get(0);

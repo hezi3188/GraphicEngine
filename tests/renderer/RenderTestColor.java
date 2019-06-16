@@ -279,4 +279,44 @@ class RenderTestColor {
 
         renderer.renderImage(imageWriter);
     }
+
+
+
+
+
+
+
+
+
+    @Test
+    public void qubee(){
+        Scene scene = new Scene("");
+        //scene.setBackColor(new Color(java.awt.Color.white));
+        scene.setCamAndDis(new Camera(new Point3D(0, 0, 0), new vector(-2, 0, -7), new vector(0, 1, 0)), 100);
+        scene.setFillLight(new AmbientLight(new Color(0,0,0),0.2));
+        Point3D TopRight = new Point3D(-200,200,-150);
+        double width = 300;
+        double height = 300;
+        double dip =300;
+
+        Sphere a = new Sphere(100,new Point3D(-50,50,-150),new Color(255,255,100));
+
+        Sphere b = new Sphere(70,new Point3D(-50,50,-150),new Color(0,255,0));
+        scene.insertImage(a);
+        scene.insertImage(b);
+        PointLight Li = new PointLight(new Color(0,120,120),new Point3D(-50,50,-100),1,0.005,0.00001);
+        scene.insertLight(Li);
+        /*SpotLight Li2 = new SpotLight(new Color(0,120,120),TopRight.add(new vector(width,-height,0)),1,0.001,0.00001,new Point3D(-50,40,-280).substract(TopRight.add(new vector(width,-height,0))));
+        scene.insertLight(Li2);*/
+        PointLight Li3 = new PointLight(new Color(0,120,120),new Point3D(0,100,100),1,0.005,0.00001);
+        scene.insertLight(Li3);
+        /*SpotLight Li4 = new SpotLight(new Color(255,0,0),TopRight.add(new vector(width,-height,0)),1,0.001,0.00001,new Point3D(0,0,0).substract(TopRight.add(new vector(width/2,0,20))));
+        scene.insertLight(Li4);*/
+
+        ImageWriter imageWriter = new ImageWriter("testhezi", 500, 500, 500, 500);
+        Render render = new Render(scene);
+        render.renderImage(imageWriter);
+    }
+
+
 }

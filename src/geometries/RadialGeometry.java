@@ -4,8 +4,8 @@ import primitives.*;
 public abstract class RadialGeometry extends Geometry{
     double _radius;
 
-    public RadialGeometry(double radius,Color c) {
-        super(c);
+    public RadialGeometry(double radius,Color c,Material m) {
+        super(c,m);
         this._radius = radius;
     }
     public RadialGeometry(RadialGeometry obj) {

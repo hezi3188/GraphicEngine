@@ -14,9 +14,14 @@ public class Plane extends Geometry implements FlatGeometry {
         this.a = new Point3D(a);
         this.cross = new vector(cross).normalize();
     }
+    public Plane(Point3D a, vector cross, Color color,Material m) {
+        super(color,m);
+        this.a = new Point3D(a);
+        this.cross = new vector(cross).normalize();
+    }
 
-    public Plane(Point3D a, Point3D b, Point3D c, Color color) {
-        super(color);
+    public Plane(Point3D a, Point3D b, Point3D c, Color color,Material m) {
+        super(color,m);
         this.a = new Point3D(a);
         this.cross = new vector(c.substract(a).normalize()).crossProduct(new vector(b.substract(a).normalize())).normalize();
     }
