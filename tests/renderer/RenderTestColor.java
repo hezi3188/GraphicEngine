@@ -299,9 +299,9 @@ class RenderTestColor {
         double height = 300;
         double dip =300;
 
-        Sphere a = new Sphere(100,new Point3D(-50,50,-150),new Color(255,255,100),new Material(0,0,1,0.5,0.8));
+        Sphere a = new Sphere(100,new Point3D(-50,50,-150),new Color(255,255,100),new Material(0,0,1,0,1));
 
-        Sphere b = new Sphere(70,new Point3D(-50,50,-150),new Color(0,255,0),new Material(0,0,0,0,0.8));
+        Sphere b = new Sphere(70,new Point3D(-50,50,-150),new Color(0,255,0),new Material(0,0,0,0.5,0));
         scene.insertImage(a);
         scene.insertImage(b);
         PointLight Li = new PointLight(new Color(0,120,120),new Point3D(-50,50,-100),1,0.005,0.00001);

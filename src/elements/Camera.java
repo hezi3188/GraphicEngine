@@ -25,9 +25,7 @@ public class Camera {
         this.position = new Point3D(point);
         this.CamFront = ahead.normalize();
         this.CamUp = up.normalize();
-        if(this.CamFront.dotProduct(this.CamUp) == 0) {
-            this.CamLeft = CamFront.crossProduct(CamUp).normalize();
-        }
+        this.CamLeft = CamFront.crossProduct(CamUp).normalize();
     }
 
     public Camera(Camera cam) {

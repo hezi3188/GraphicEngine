@@ -11,6 +11,7 @@ import scene.Scene;
 import java.util.*;
 
 public class Render {
+    public static int LevelRec = 1;
     private Scene Simulation;
     private ImageWriter imageWriter;
 
@@ -29,8 +30,8 @@ public class Render {
         Point3D CloseP;
        this.imageWriter = new ImageWriter(img);
        for(int i=0;i<img.getNx();i++) {
-           if(i%(img.getNx()/100) == 0)
-               System.out.println((double) 100*i/img.getNx()+"%   ");
+           /*if(i%(img.getNx()/100) == 0)
+               System.out.println((double) 100*i/img.getNx()+"%   ");*/
            for (int y = 0; y < img.getNy(); y++) {
                boolean Flag = false;
                Color PixColor = new Color(0,0,0);
@@ -55,7 +56,6 @@ public class Render {
                //}
            }
        }
-        printGrid(Math.min(img.getNx(),img.getNy()));
         imageWriter.writeToimage();
     }
     private Map<Geometry,List<Point3D>> IntersectionOnPixel(ray R){
@@ -79,6 +79,7 @@ public class Render {
             instractionPoints.remove(g);
 
         }
+        instractionPoints.entrySet().removeIf(entry -> entry.getKey().get_material().get_kt()>0);
         return instractionPoints.isEmpty();
 
     }
@@ -91,7 +92,7 @@ public class Render {
             g.get_material();
         }
         Color ReflectColor = new Color(0,0,0);
-        if(level < 1) {
+        if(level < LevelRec && g.get_material().get_kr()>0) {
             ray reflectedRay = constarctReflectRay(g.getNormal(p), p, inRay);
             Map<Geometry, List<Point3D>> x = IntersectionOnPixel(reflectedRay);
             if (x.size() > 0) {
@@ -102,7 +103,7 @@ public class Render {
 
 
         Color RefractedColor = new Color(0,0,0);
-        if(level < 2) {
+        if(level < LevelRec  && g.get_material().get_kt()>0) {
             ray RefractedRay = constarctReftractedRay(g.getNormal(p), p, inRay);
             Map<Geometry, List<Point3D>> x = IntersectionOnPixel(RefractedRay);
             if (x.size() > 0) {
@@ -131,47 +132,6 @@ public class Render {
         if(O.getColor().getBlue() == 0)
             O.getColor();
         return O;
-        /*Color a;
-        Color amissionLight=new Color(0,0,0);//=g.getEmmission();
-        if(this.Simulation.getLight() != null && this.Simulation.getLight().size()>0) {
-            for (Light x : Simulation.getLight()) {
-
-                List<Boolean> IsCome = new ArrayList<>();
-                if(x instanceof PointLight) {
-                    Simulation.getImage().forEach((y) -> {
-                        List<Point3D> l = y.findIntersections(new ray(((PointLight) x).get_position(), p));*/
-                        /*if (y.equals(g) && (l == null || l.size() == 0))
-                            IsCome.add(false);
-                        if (l != null && l.size() > 0) {
-                            for (Point3D z : l) {
-                                if ((((PointLight) x).get_position().distance(z)) < ((PointLight) x).get_position().distance(p) && !z.equals(p)) {
-                                    //IsCome.add(false);
-                                }
-                            }
-                        }*/
-                  /*  });
-                    /*if( IsCome.size()==0 &&
-                        g.findIntersections(new ray(this.Simulation.getCam().getPosition(),((PointLight) x).get_position()))!= null &&
-                        g.findIntersections(new ray(this.Simulation.getCam().getPosition(),((PointLight) x).get_position())).size()>0)
-                            IsCome.add(false);*/
-               // }
-
-                /*if(IsCome.size()==0) {
-                    if(x instanceof SpotLight)
-                        a = ((SpotLight)x).getIntensity(p, g,g.getNormal(p));
-                    else
-                        a = x.getIntensity(p, g);
-                    amissionLight = amissionLight.add(a);
-                    //amissionLight = amissionLight.add(new Color(java.awt.Color.white));
-                }*//*
-            }
-        }
-        else {
-            amissionLight=g.getEmmission();
-            amissionLight.add(Simulation.getFillLight().GetIntensity());
-            return amissionLight;
-        }
-        return new primitives.Color(amissionLight);*/
     }
 
     private ray constarctReflectRay(vector ggetNormal,Point3D p,ray inRay){
@@ -182,7 +142,7 @@ public class Render {
     private ray constarctReftractedRay(vector ggetNormal,Point3D p,ray inRay){
         vector temp=new vector((vector)inRay.normalize());
         Point3D point=new Point3D(p);
-        point.add(temp);
+        point = point.add(temp);
         return new ray(point,(vector)inRay);
     }
 
