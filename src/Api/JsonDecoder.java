@@ -18,6 +18,8 @@ import renderer.ImageWriter;
 import renderer.Render;
 import scene.Scene;
 
+import static renderer.Render.LevelRec;
+
 public class JsonDecoder {
     public static String NameFile = "abc";
 
@@ -81,7 +83,10 @@ public class JsonDecoder {
             } else if (name.equals("AmbientLight") && param.length() == 2) {
                 return new AmbientLight((Color)Params[0], (Double)Params[1]);
             } else if (name.equals("ImageWriter") && param.length() == 5) {
-                return new ImageWriter(NameFile, (Double)Params[1], (Double)Params[2], (int)(double)Params[3], (int)(double)Params[4]);
+                LevelRec = Math.min((int)((double)Params[0]),3);
+                int px = Math.min(600,(int)(double)Params[3]);
+                int py = Math.min(600,(int)(double)Params[4]);
+                return new ImageWriter(NameFile, (Double)Params[1], (Double)Params[2], px, py);
             } else if (name.equals("Color") && param.length() == 3) {
                 return new Color((Double)Params[0], (Double)Params[1], (Double)Params[2]);
             } else if (name.equals("PointLight") && param.length() == 5) {

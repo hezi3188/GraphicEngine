@@ -34,7 +34,7 @@ public class Triangle extends Geometry implements FlatGeometry {
         return new Point3D(c);
     }
     public List<Point3D> findIntersections(ray R) {
-        Plane plane = new Plane(a,b,c,this.getEmmission(),null);
+        Plane plane = new Plane(a,b,c,this.getEmmission(),new Material(1,1,100,0,0));
         List<Point3D> cut = plane.findIntersections(R);
         if(cut == null) return null;
         Point3D P = cut.get(0);
