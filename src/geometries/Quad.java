@@ -19,6 +19,14 @@ public class Quad  extends Geometry  {
         BottumLeft = bottumLeft;
         Calc();
     }
+    public Quad(Point3D topRight, Point3D topLeft, Point3D bottumRight, Point3D bottumLeft, Color c,Material M) {
+        super(c,M);
+        TopRight = topRight;
+        TopLeft = topLeft;
+        BottumRight = bottumRight;
+        BottumLeft = bottumLeft;
+        Calc();
+    }
     public Quad(Point3D topRight,double width,double height, Color c) {
         super(c);
         TopRight = topRight;
