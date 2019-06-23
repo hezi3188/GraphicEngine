@@ -96,7 +96,7 @@ public class JsonDecoder {
             } else if (name.equals("Material") && param.length() == 5) {
                 return new Material((Double)Params[0], (Double)Params[1], (int)(double)Params[2], (Double)Params[3], (Double)Params[4]);
             } else if (name.equals("Quad") && param.length() == 6) {
-                return new Quad((Point3D)Params[0], (Point3D)Params[1], (Point3D)Params[2], (Point3D)Params[3], (Color)Params[4],(Material)Params[4]);
+                return new Quad((Point3D)Params[0], (Point3D)Params[1], (Point3D)Params[2], (Point3D)Params[3], (Color)Params[4],(Material)Params[5]);
             } else {
                 System.out.println(name + "with" + param.length() + "params - Dont find Cons");
                 return null;

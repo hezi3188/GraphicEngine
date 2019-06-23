@@ -1,6 +1,7 @@
 package renderer;
 
 import elements.AmbientLight;
+import geometries.Quad;
 import geometries.Sphere;
 import geometries.Triangle;
 import org.junit.jupiter.api.Test;
@@ -52,5 +53,29 @@ class RenderTest2 {
 
 
     }
+    @Test
+
+    public void Quad(){
+
+        Scene scene = new Scene("qyadTest");
+
+                Quad triangle = new Quad(new Point3D(150,-200,-150),new Point3D(150,-200,0),new Point3D(0,-200,-150),
+                new Point3D(0,-200,0),new Color(255,255,255),new Material(1,1,10,0,0));
+        scene.insertImage(triangle);
+
+        scene.setFillLight(new AmbientLight(new Color(java.awt.Color.white),0.2));
+        scene.setDis(100);
+
+        ImageWriter imageWriter = new ImageWriter("Quad test", 500, 500, 500, 500);
+
+        Render render = new Render(scene);
+
+        render.renderImage(imageWriter);
+        //render.printGrid(50);
+        //imageWriter.writeToimage();
+
+
+    }
+
 
 }
