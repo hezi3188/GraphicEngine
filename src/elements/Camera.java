@@ -1,5 +1,6 @@
 package elements;
 
+import primitives.Focus;
 import primitives.Point3D;
 import primitives.ray;
 import primitives.vector;
@@ -93,7 +94,7 @@ public class Camera {
 
     public List<ray> GetFocus(double FoucsDis, double Sribua, Point3D YXonPlane, vector FromCam){
         List<ray> rays =new ArrayList<>();
-        if(true) { // for spear time
+        if(!Focus.enable) { // for spear time
             rays.add(new ray(position,YXonPlane.substract(position).normalize()));
             return rays;
         }

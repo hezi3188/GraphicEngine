@@ -35,7 +35,7 @@ public class Render {
            for (int y = 0; y < img.getNy(); y++) {
                boolean Flag = false;
                Color PixColor = new Color(0,0,0);
-               RR = OurCam.constructRaysThroughPixel(img.getNx(), img.getNx(), i, y, distance, img.getWidth(), img.getHeight(),100,1);
+               RR = OurCam.constructRaysThroughPixel(img.getNx(), img.getNx(), i, y, distance, img.getWidth(), img.getHeight(),Simulation.getFocus().getDistance(),Simulation.getFocus().getEyeOpen());
 
                for (ray R: RR) {
                    mapOfAllCut = IntersectionOnPixel(R);
@@ -136,7 +136,7 @@ public class Render {
 
     private ray constarctReflectRay(vector ggetNormal,Point3D p,ray inRay){
         vector R = ggetNormal.multScalar((new vector(inRay.getPoint())).dotProduct(ggetNormal)*-2).add(inRay);
-        return new ray(p,R);
+        return new ray(p.add(R.normalize().multScalar(2)),R);
     }
 
     private ray constarctReftractedRay(vector ggetNormal,Point3D p,ray inRay){

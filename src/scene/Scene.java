@@ -7,6 +7,7 @@ import elements.LightSource;
 import geometries.Intersectable;
 import geometries.Triangle;
 import primitives.Color;
+import primitives.Focus;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +22,7 @@ public class Scene {
     private Camera cam;
     private double DisToScreen;
     private List<Intersectable> image;
+    private Focus focus;
 
     public Scene(Scene s) {
         this.name = s.getName();
@@ -31,6 +33,7 @@ public class Scene {
         this.image = new ArrayList<Intersectable>(s.image);
         this.lights = new ArrayList<LightSource>(s.lights);
         this.image = s.getImage();
+        this.focus = s.getFocus();
     }
 
     public void addLight(LightSource light){
@@ -51,6 +54,14 @@ public class Scene {
         if(fillLight == null)
             return new AmbientLight();
         return new AmbientLight(fillLight);
+    }
+
+    public Focus getFocus() {
+        return focus;
+    }
+
+    public void setFocus(Focus focus) {
+        this.focus = focus;
     }
 
     public Camera getCam() {
@@ -75,6 +86,7 @@ public class Scene {
         this.lights = new ArrayList<LightSource>();
         this.cam = new Camera();
         this.setBackColor(new Color(java.awt.Color.BLACK));
+        this.focus = new Focus();
     }
 
     public void insertImage(Intersectable image) {

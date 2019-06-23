@@ -139,30 +139,31 @@ class RenderTestColor {
     @Test
     public void test5(){
         Scene scene = new Scene("");
+        scene.setFillLight(new AmbientLight(new Color(10,10,10),0.10));
         //scene.setDis(150);
-        scene.setCamAndDis(new Camera(new Point3D(0,0,0),new vector(0,0,-1),new vector(1,0,0)),150);
+        scene.setCamAndDis(new Camera(new Point3D(0,0,1000),new vector(0,0,-1),new vector(1,0,0)),500);
         //Material material = new Material(19, 0.4, 0.2);
         Point3D pSphere = new Point3D(-50, -100, -150);
-        Sphere sphere = new Sphere(50, pSphere,new Color(10, 100, 20),new Material(0,0,0,0,0));
+        Sphere sphere = new Sphere(100, pSphere,new Color(10, 100, 20),new Material(1,1,100,0,1));
         //sphere.setEmmission();
         //sphere.setMaterial(material);
         scene.insertImage(sphere);
 
         Point3D pSphere1 = new Point3D(-30, 0, -250);
-        Sphere sphere1 = new Sphere(70,pSphere1,new Color(110, 20, 10),new Material(0,0,0,0,0));
+        Sphere sphere1 = new Sphere(70,pSphere1,new Color(110, 20, 10),new Material(1,1,100,0.5,0));
         //sphere1.setEmmission(new Color(110, 20, 10));
         //sphere1.setMaterial(material);
         scene.insertImage(sphere1);
 
         Point3D pSphere2 = new Point3D(-10, 150, -350);
-        Sphere sphere2 = new Sphere(90,pSphere2,new Color(20, 20, 100) ,new Material(0,0,0,0,0));
+        Sphere sphere2 = new Sphere(90,pSphere2,new Color(20, 20, 100) ,new Material(1,1,100,0,0));
         /*sphere2.setEmmission(new Color(20, 20, 100));
         sphere2.setMaterial(material);*/
         scene.insertImage(sphere2);
 
 
         Plane plane = new Plane(new Point3D(-100, 0 , 0),new vector(1,0,0), new Color(133, 133, 133));
-        plane.set_material(new Material(20,0.5,20,0,0));
+        plane.set_material(new Material(1,1,100,0.5,0));
         //plane.setMaterial(15, 0.1, 0.4, 0.2,1);
         //plane.setEmmission(new Color(133, 133, 133));
         scene.insertImage(plane);
@@ -175,8 +176,9 @@ class RenderTestColor {
                 , 0, 0.001, 0.0001 , //right light
                 pSphere2.substract(new Point3D(300, 0, -250))));
 
-
-        ImageWriter imageWriter = new ImageWriter("testPart3_02", 500, 500, 500, 500);
+        //scene.setFocus(new Focus(600,1));
+        //Focus.enable = true;
+        ImageWriter imageWriter = new ImageWriter("testPart3_02", 400, 400, 500, 500);
         Render render = new Render(scene);
         render.renderImage(imageWriter);
         //render.writeToImage();
