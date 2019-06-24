@@ -105,10 +105,10 @@ public class Camera {
         Point3D PL3 = YXonPlane.add(CamUp.multScalar(-Sribua/2)).add(CamLeft.multScalar(-Sribua/2));
         Point3D PL4 = YXonPlane.add(CamUp.multScalar(-Sribua/2)).add(CamLeft.multScalar(Sribua/2));
 
-        ray L1 = new ray(position,PointF.substract(PL1).normalize());
-        ray L2 = new ray(position,PointF.substract(PL2).normalize());
-        ray L3 = new ray(position,PointF.substract(PL3).normalize());
-        ray L4 = new ray(position,PointF.substract(PL4).normalize());
+        ray L1 = new ray(PL1,PointF.substract(PL1).normalize());
+        ray L2 = new ray(PL2,PointF.substract(PL2).normalize());
+        ray L3 = new ray(PL3,PointF.substract(PL3).normalize());
+        ray L4 = new ray(PL4,PointF.substract(PL4).normalize());
 
         rays.add(L1);
         rays.add(L2);

@@ -10,13 +10,15 @@ import geometries.*;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import primitives.Color;
-import primitives.Material;
-import primitives.Point3D;
-import primitives.vector;
+import org.w3c.dom.NodeList;
+import primitives.*;
 import renderer.ImageWriter;
 import renderer.Render;
 import scene.Scene;
+
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
 
 import static renderer.Render.LevelRec;
 
@@ -24,6 +26,18 @@ public class JsonDecoder {
     public static String NameFile = "abc";
 
     public JsonDecoder() {
+    }
+    public static Geometry[] append(Object[] o){
+        List<Geometry> list = new LinkedList<Geometry>();
+        for (Object x:o){
+            if(x instanceof Group){
+                list.addAll(Arrays.asList(append(((Group) x).getG())));
+            }
+            else{
+                list.add((Geometry) x);
+            }
+        }
+        return (Geometry[]) list.toArray();
     }
 
     public static void JsonToScene(String File, String name) {
@@ -36,7 +50,13 @@ public class JsonDecoder {
 
         int i;
         for(i = 0; i < geo.length(); ++i) {
-            scene.insertImage((Geometry)newObj(getStr(geo.getJSONObject(i), "name"), getArr(geo.getJSONObject(i), "param")));
+            Object temp = newObj(getStr(geo.getJSONObject(i), "name"), getArr(geo.getJSONObject(i), "param"));
+            if(temp instanceof Group)
+                for(Object g:append(((Group) temp).getG())){
+                    scene.insertImage((Geometry)temp);
+                }
+            else
+                scene.insertImage((Geometry)temp);
         }
 
         for(i = 0; i < light.length(); ++i) {
@@ -51,7 +71,9 @@ public class JsonDecoder {
 
         scene.setCamAndDis((Camera)settingParams[0], (Double)settingParams[3]);
         scene.setFillLight((AmbientLight)settingParams[1]);
+        if(settingParams.length>4) scene.setFocus((Focus) settingParams[4]);
         ImageWriter imageWriter = (ImageWriter)settingParams[2];
+
         Render render = new Render(scene);
         render.renderImage(imageWriter);
     }
@@ -97,6 +119,11 @@ public class JsonDecoder {
                 return new Material((Double)Params[0], (Double)Params[1], (int)(double)Params[2], (Double)Params[3], (Double)Params[4]);
             } else if (name.equals("Quad") && param.length() == 6) {
                 return new Quad((Point3D)Params[0], (Point3D)Params[1], (Point3D)Params[2], (Point3D)Params[3], (Color)Params[4],(Material)Params[5]);
+            } else if (name.equals("Group")) {
+                return new Group((Geometry[])Params);
+            } else if (name.equals("Focus") && param.length() == 2) {
+                if((double)Params[0] != 100) Focus.enable = true; else Focus.enable = false;
+                return new Focus((double)Params[0], (double)Params[1]);
             } else {
                 System.out.println(name + "with" + param.length() + "params - Dont find Cons");
                 return null;
