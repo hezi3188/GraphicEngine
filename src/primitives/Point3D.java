@@ -57,6 +57,7 @@ public class Point3D extends pointD2 {
 	public boolean equals(Object o) {
 		if (this == o) return true;
 		if (o == null || getClass() != o.getClass()) return false;
+		if(this.getX().get() == ((Point3D)o).getX().get() && this.getY().get() == ((Point3D)o).getY().get() && this.getZ().get() == ((Point3D)o).getZ().get()) return true;
 		if (!super.equals(o)) return false;
 		Point3D Point3D = (Point3D) o;
 		return Objects.equals(z, Point3D.z) && super.equals(o);

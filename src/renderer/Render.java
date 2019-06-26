@@ -37,6 +37,7 @@ public class Render {
                Color PixColor = new Color(0,0,0);
                RR = OurCam.constructRaysThroughPixel(img.getNx(), img.getNx(), i, y, distance, img.getWidth(), img.getHeight(),Simulation.getFocus().getDistance(),Simulation.getFocus().getEyeOpen());
 
+
                for (ray R: RR) {
                    mapOfAllCut = IntersectionOnPixel(R);
                    if (mapOfAllCut.size() > 0) {
@@ -45,6 +46,13 @@ public class Render {
                        PixColor = PixColor.add(this.calcColor(entryClosePoint.getKey(), entryClosePoint.getValue(), R).scale((double)1/RR.size()));
                    }
                }
+
+               mapOfAllCut = IntersectionOnPixel(RR.get(RR.size()-1));
+               if (mapOfAllCut.size() > 0) {
+                   entryClosePoint = getClosestPoint(mapOfAllCut);
+                   PixColor = PixColor.add(getReflectedColor(entryClosePoint.getKey(), entryClosePoint.getValue(), RR.get(RR.size()-1), 0));
+               }
+
 
                if(Flag)
                    imageWriter.writePixel(i, y, PixColor);
@@ -88,29 +96,20 @@ public class Render {
     }
 
     private Color calcColor(Geometry g, Point3D p,ray inRay,int level){
-        if(g instanceof Sphere && level==0){
-            g.get_material();
-        }
         Color ReflectColor = new Color(0,0,0);
         if(level < LevelRec && g.get_material().get_kr()>0) {
             ray reflectedRay = constarctReflectRay(g.getNormal(p), p, inRay);
             Map<Geometry, List<Point3D>> x = IntersectionOnPixel(reflectedRay);
             if (x.size() > 0) {
-                Map.Entry<Geometry, Point3D> entryClosePoint = getClosestPoint(x);
+                Map.Entry<Geometry, Point3D> entryClosePoint = getClosestPoint(x,p);
                 ReflectColor = ReflectColor.add(this.calcColor(entryClosePoint.getKey(), entryClosePoint.getValue(), reflectedRay, level + 1));
             }
         }
 
 
-        Color RefractedColor = new Color(0,0,0);
-        if(level < LevelRec  && g.get_material().get_kt()>0) {
-            ray RefractedRay = constarctReftractedRay(g.getNormal(p), p, inRay);
-            Map<Geometry, List<Point3D>> x = IntersectionOnPixel(RefractedRay);
-            if (x.size() > 0) {
-                Map.Entry<Geometry, Point3D> entryClosePoint = getClosestPoint(x);
-                RefractedColor = RefractedColor.add(this.calcColor(entryClosePoint.getKey(), entryClosePoint.getValue(), RefractedRay, level + 1));
-            }
-        }
+        Color RefractedColor;
+        if(level>0) RefractedColor= getReflectedColor(g, p, inRay, level);
+        else RefractedColor = new Color(0,0,0);
 
 
         Color ambientLight = Simulation.getFillLight().GetIntensity().scale(0.2);;
@@ -124,7 +123,7 @@ public class Render {
         for (LightSource x : Simulation.getLight()) {
             if (occluded(x, p, g)) {
                 diffuseLight = diffuseLight.add(calcDiffusiveComp(g.get_material().get_Kd(), g.getNormal(p), x.getL(p), x.getIntensity(p)));
-                specularLight = specularLight.add(calcSpecularComp(g.get_material().get_Ks(), p.substract(Simulation.getCam().getPosition()), g.getNormal(p), x.getL(p), g.get_material().get_nShininess(), x.getIntensity(p)));
+                specularLight = specularLight.add(calcSpecularComp(g.get_material().get_Ks(), p.substract(inRay.getStart()), g.getNormal(p), x.getL(p), g.get_material().get_nShininess(), x.getIntensity(p)));
             }
         }
 
@@ -132,6 +131,19 @@ public class Render {
         if(O.getColor().getBlue() == 0)
             O.getColor();
         return O;
+    }
+
+    private Color getReflectedColor(Geometry g, Point3D p, ray inRay, int level) {
+        Color RefractedColor = new Color(0,0,0);
+        if(level < LevelRec  && g.get_material().get_kt()>0) {
+            ray RefractedRay = constarctReftractedRay(g.getNormal(p), p, inRay);
+            Map<Geometry, List<Point3D>> x = IntersectionOnPixel(RefractedRay);
+            if (x.size() > 0) {
+                Map.Entry<Geometry, Point3D> entryClosePoint = getClosestPoint(x,p);
+                RefractedColor = RefractedColor.add(this.calcColor(entryClosePoint.getKey(), entryClosePoint.getValue(), RefractedRay, level + 1));
+            }
+        }
+        return RefractedColor;
     }
 
     private ray constarctReflectRay(vector ggetNormal,Point3D p,ray inRay){
@@ -165,8 +177,10 @@ public class Render {
         Color Dif = intensity.scale(pwr);
         return Dif;
     }
-
     private Map.Entry<Geometry, Point3D> getClosestPoint(Map<Geometry,List<Point3D>> points){
+        return getClosestPoint(points,this.Simulation.getCam().getPosition());
+    }
+    private Map.Entry<Geometry, Point3D> getClosestPoint(Map<Geometry,List<Point3D>> points,Point3D From){
         if(points==null) return null;
 
         Map.Entry<Geometry,List<Point3D>> maxEntry = null;
@@ -179,12 +193,12 @@ public class Render {
         {
             for(Point3D innerEntery:entry.getValue()){
                 if(Min == -1) {//first iteration
-                    Min = innerEntery.distance(this.Simulation.getCam().getPosition());
+                    Min = innerEntery.distance(From);
                     ClosePoint = new Point3D(innerEntery);
                     maxEntry = entry;
                 }
-                if(Min > Math.min(Min,innerEntery.distance(this.Simulation.getCam().getPosition()))){
-                    Min = Math.min(Min,innerEntery.distance(this.Simulation.getCam().getPosition()));
+                if(Min > Math.min(Min,innerEntery.distance(From))){
+                    Min = Math.min(Min,innerEntery.distance(From));
                     ClosePoint = new Point3D(innerEntery);
                     maxEntry = entry;
                 }

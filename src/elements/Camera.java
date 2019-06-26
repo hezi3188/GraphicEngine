@@ -71,7 +71,7 @@ public class Camera {
         double distanceY=height/pixelsY;
         double FromLeftPixelXNotUse = distanceX*Rx;
         double FromTopPixelYNotUse = distanceY*Rj;
-        double CenterFromLeftPixelX = FromLeftPixelXNotUse + (distanceX/2);
+        double CenterFromLeftPixelX = FromLeftPixelXNotUse + (distanceX/2); //*0-1
         double CenterFromTopPixelY = FromTopPixelYNotUse + (distanceY/2);
 
         Point3D centerPlane = position.add(CamFront.multScalar(distance));
@@ -114,7 +114,7 @@ public class Camera {
         rays.add(L2);
         rays.add(L3);
         rays.add(L4);
-
+        rays.add(new ray(position,YXonPlane.substract(position).normalize()));
         return rays;
     }
     /*Getters and Setters*/
