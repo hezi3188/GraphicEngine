@@ -1,5 +1,8 @@
 package primitives;
 
+/**
+ * The material of every shape
+ */
 public class Material {
     double _Kd; //distance arg
     double _Ks; //distance arg
@@ -7,6 +10,16 @@ public class Material {
     double _kr;
     double _kt;
 
+    //****************Constructors******************//
+
+    /**
+     * Constructor
+     * @param _Kd the power of defuse
+     * @param _Ks the power of specular
+     * @param _nShininess The radius of the specular
+     * @param _kr The power of reflaction
+     * @param _kt The power of refraction
+     */
     public Material(double _Kd, double _Ks, int _nShininess,double _kr,double _kt) {
         this._Kd = _Kd;
         this._Ks = _Ks;
@@ -15,6 +28,18 @@ public class Material {
         this._kt=_kt;
     }
 
+    /**
+     * Copy constructor
+     * @param M Other Material
+     */
+    public Material(Material M) {
+        this._Kd = M._Kd;
+        this._Ks = M._Ks;
+        this._nShininess = M._nShininess;
+        this._kr=M._kr;
+        this._kt=M._kt;
+    }
+//*******************getter/setter****************//
     public double get_kr() {
         return _kr;
     }
@@ -29,14 +54,6 @@ public class Material {
 
     public void set_kt(double _kt) {
         this._kt = _kt;
-    }
-
-    public Material(Material M) {
-        this._Kd = M._Kd;
-        this._Ks = M._Ks;
-        this._nShininess = M._nShininess;
-        this._kr=M._kr;
-        this._kt=M._kt;
     }
 
     public double get_Ks() {

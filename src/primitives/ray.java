@@ -1,25 +1,46 @@
 package primitives;
 
+/**
+ * Vector with start point 3d
+ */
 public class ray extends vector {
 	Point3D start;
-/**
- * Javadoc formatted documentation
- */
+
 // ***************** Constructors ********************** //
+
+	/**
+	 * Constractor that get vector an start point
+	 * @param strat
+	 * @param vec
+	 */
 	public ray(Point3D strat, vector vec) {
 		super(vec);
 		this.start = new Point3D(strat);
 	}
 
+	/**
+	 * Constructor that get 3d point start and the end
+	 * is 3d point to new ray
+	 * @param strat
+	 * @param End
+	 */
 	public ray(Point3D strat, Point3D End) {
 		super(End.substract(strat).normalize());
 		this.start = new Point3D(strat);
 	}
 
+	/**
+	 * Copy constructor
+	 * @param r Other ray
+	 */
 	public ray (ray r){
 		super(r);
 		this.start = new Point3D(r.getStart());
 	}
+
+	/**
+	 * Deafult constructor
+	 */
 	public ray(){
 		super();
 		start = new Point3D();
@@ -44,6 +65,11 @@ public class ray extends vector {
 	}
 
 // ***************** Operations ******************** //
+
+	/**
+	 * Make ray to vector
+	 * @return Return the ray that represents as vector
+	 */
 	private vector RayToVec(){
 		return new vector(start.add((vector)this));
 	}

@@ -2,43 +2,49 @@ package primitives;
 
 import java.util.Objects;
 
-
 /**
- * Javadoc formatted documentation
+ * Poind with 3 coordinates
  */
-
-
-
-
-/**
- * Javadoc formatted documentation
- */
-
-
-/**
- * Javadoc formatted documentation
- */
-
-
-// ***************** Operations ******************** //
 
 public class Point3D extends pointD2 {
 	private Coordinate z;
 
 // ***************** Constructors ********************** //
 
+	/**
+	 * Constructor that get 3 coordinate
+	 * @param x Coordinate x
+	 * @param y Coordinate Y
+	 * @param z Coordinate z
+	 */
 	public Point3D(Coordinate x, Coordinate y, Coordinate z) {
 		super(x,y);
 		this.z=new Coordinate(z);
 	}
+
+	/**
+	 * Constructor that get 3 doubles
+	 * @param x Double x
+	 * @param y Double Y
+	 * @param z Double z
+	 */
 	public Point3D(double x, double y, double z) {
 		super(new Coordinate(x),new Coordinate(y));
 		this.z=new Coordinate(z);
 	}
+
+	/**
+	 * Copy constructor
+	 * @param p Other pointD3
+	 */
 	public Point3D(Point3D p){
 		super(p);
 		this.z=new Coordinate(p.z);
 	}
+
+	/**
+	 * Deafult constructor
+	 */
 	public Point3D() {
 		super();
 		this.z = new Coordinate(Coordinate.ZERO);
@@ -74,11 +80,21 @@ public class Point3D extends pointD2 {
 
 	// ***************** Administration  ******************** //
 
-
+	/**
+	 * Substract pointD3 from pointD3
+	 * and return the vector between them
+	 * @param p The poindD3
+	 * @return Substruct vector
+	 */
 	public vector substract(Point3D p){
 		return new vector(this.ReturnSubbstractVector(p));
 	}
 
+	/**
+	 * Help function to substract
+	 * @param p pointD3
+	 * @return Substruct vector
+	 */
 	private vector ReturnSubbstractVector(Point3D p){
 		return new vector(
 				new Point3D(
@@ -88,6 +104,12 @@ public class Point3D extends pointD2 {
 				)
 		);
 	}
+
+	/**
+	 * Add vector to PointD3
+	 * @param v Vector
+	 * @return Return the pointD3 of the adding
+	 */
 	@Override
 	public Point3D add(vector v){
 		return (new Point3D(
@@ -97,6 +119,12 @@ public class Point3D extends pointD2 {
 		));
 	}
 
+	/**
+	 * The pow distance between
+	 * point to own point
+	 * @param p The other pointD3
+	 * @return The pow distance
+	 */
 	public double powDistance(Point3D p){
 		Coordinate x = (this.getX().subtract(p.getX())).multiply(this.getX().subtract(p.getX()));
 		Coordinate y = (this.getY().subtract(p.getY())).multiply(this.getY().subtract(p.getY()));
@@ -104,11 +132,20 @@ public class Point3D extends pointD2 {
 		return x.add(y.add(z)).get();
 	}
 
+	/**\
+	 * The distance between
+	 * p to own point
+	 * @param p The other point
+	 * @return The distance
+	 */
 	public  double distance(Point3D p){
 		return Math.sqrt(this.powDistance(p));
 	}
 
-
+	/**
+	 * Check if the point is zero
+	 * @return Return true if the point is zero
+	 */
 	public boolean isZero() {
 		if(getX().isZero() && getY().isZero() && getZ().isZero())return true;
 		return false;
