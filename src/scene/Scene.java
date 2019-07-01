@@ -1,4 +1,7 @@
 package scene;
+/**
+ * object of Scene that contain all geomtrys and lights and settings
+ */
 
 import elements.AmbientLight;
 import elements.Camera;
@@ -89,10 +92,17 @@ public class Scene {
         this.focus = new Focus();
     }
 
+    /**
+     * for add geomtry to scene
+     * @param image the geomtry
+     */
     public void insertImage(Intersectable image) {
         this.image.add(image); // ToDo: deep copy to image
     }
-
+    /**
+     * for add light to scene
+     * @param or the light
+     */
     public void insertLight(LightSource or) {
         this.lights.add(or); // ToDo: deep copy to image
     }

@@ -3,9 +3,19 @@ import primitives.*;
 
 import java.util.List;
 
+/**
+ * tube geomtry element
+ */
 public class Tube extends RadialGeometry implements IGeometry {
     protected ray center;
 
+    /**
+     * constractor of tube
+     * @param radius radius of tube
+     * @param center the ray of base tube
+     * @param c color of tube
+     * @param m material of tube
+     */
     public Tube(double radius, ray center,Color c,Material m) {
         super(radius,c,m);
         this.center = new ray(center);

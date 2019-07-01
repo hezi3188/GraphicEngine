@@ -2,7 +2,9 @@
 // Source code recreated from a .class file by IntelliJ IDEA
 // (powered by Fernflower decompiler)
 //
-
+/**
+ * A func to create Scene fron Json file
+ */
 package Api;
 
 import elements.*;
@@ -25,8 +27,11 @@ import static renderer.Render.LevelRec;
 public class JsonDecoder {
     public static String NameFile = "abc";
 
-    public JsonDecoder() {
-    }
+    /**
+     * add all geomtrys from array to scene
+     * @param o arr of geomtry and groups
+     * @return arr of geomtry
+     */
     public static Geometry[] append(Object[] o){
         List<Geometry> list = new LinkedList<Geometry>();
         for (Object x:o){
@@ -40,6 +45,11 @@ public class JsonDecoder {
         return (Geometry[]) list.toArray();
     }
 
+    /**
+     * main func to work
+     * @param File Json string
+     * @param name name file
+     */
     public static void JsonToScene(String File, String name) {
         NameFile = name;
         Scene scene = new Scene("");
@@ -78,6 +88,12 @@ public class JsonDecoder {
         render.renderImage(imageWriter);
     }
 
+    /**
+     * recurcve func tom convert json to object in object
+     * @param name string
+     * @param param json array
+     * @return object from program
+     */
     public static Object newObj(String name, JSONArray param) {
         if (name.equals("double")) {
             return param.getDouble(0);

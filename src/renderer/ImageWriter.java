@@ -1,5 +1,8 @@
 package renderer;
 
+/**
+ * buffer of image
+ */
 
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -20,6 +23,15 @@ public class ImageWriter {
 	private String _imageName;
 
 	// ***************** Constructors ********************** //
+
+	/**
+	 * constractor to image
+	 * @param imageName name
+	 * @param width
+	 * @param height
+	 * @param nX pixels on X
+	 * @param nY pixels on Y
+	 */
 	public ImageWriter(String imageName, double width, double height, int nX, int nY) {
 		_imageName = imageName;
 		_imageWidth = width;
@@ -30,6 +42,10 @@ public class ImageWriter {
 		_image = new BufferedImage(_nX, _nY, BufferedImage.TYPE_INT_RGB);
 	}
 
+	/**
+	 * copy constractor
+	 * @param imageWriter old object
+	 */
 	public ImageWriter (ImageWriter imageWriter) {
 		this(	imageWriter._imageName,
 				imageWriter._imageWidth, imageWriter._imageHeight,
@@ -49,6 +65,9 @@ public class ImageWriter {
 
 	// ***************** Operations ******************** //
 
+	/**
+	 * create the image
+	 */
 	public void writeToimage(){
 		File ouFile = new File(PROJECT_PATH + "/" + _imageName + ".jpg");
 		try {
@@ -64,6 +83,12 @@ public class ImageWriter {
 		}
 	}
 
+	/**
+	 * paint pixel
+	 * @param xIndex position X
+	 * @param yIndex position Y
+	 * @param color selected Color
+	 */
 	public void writePixel(int xIndex, int yIndex, Color color){
 		_image.setRGB(xIndex, yIndex, color.getColor().getRGB());
 	}
