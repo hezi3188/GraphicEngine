@@ -1,9 +1,10 @@
 package elements;
+import primitives.Color;
+
 /**
  * The power of color that the object return even when the light trun off.
  */
 
-import primitives.Color;
 
 public class AmbientLight {
     protected Color RGB;

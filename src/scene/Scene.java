@@ -1,7 +1,5 @@
 package scene;
-/**
- * object of Scene that contain all geomtrys and lights and settings
- */
+
 
 import elements.AmbientLight;
 import elements.Camera;
@@ -14,7 +12,9 @@ import primitives.Focus;
 
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * object of Scene that contain all geomtrys and lights and settings
+ */
 public class Scene {
 
     private String name;

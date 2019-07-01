@@ -1,8 +1,6 @@
 package renderer;
 
-/**
- * buffer of image
- */
+
 
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -11,6 +9,9 @@ import java.io.IOException;
 import javax.imageio.*;
 import javax.imageio.stream.*;
 import primitives.Color;
+/**
+ * buffer of image
+ */
 public class ImageWriter {
 
 	private double _imageWidth, _imageHeight;
@@ -27,8 +28,8 @@ public class ImageWriter {
 	/**
 	 * constractor to image
 	 * @param imageName name
-	 * @param width
-	 * @param height
+	 * @param width width
+	 * @param height height
 	 * @param nX pixels on X
 	 * @param nY pixels on Y
 	 */

@@ -1,8 +1,5 @@
 package elements;
-/**
- * Camera element. place in scene and used for set the place of view of scene.
- * @author Avishai elia & hezi BenAtar
- */
+
 
 import primitives.Focus;
 import primitives.Point3D;
@@ -11,7 +8,10 @@ import primitives.vector;
 
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * Camera element. place in scene and used for set the place of view of scene.
+ * @author Avishai elia and hezi BenAtar
+ */
 public class Camera {
     protected Point3D position;
     protected vector CamFront;
