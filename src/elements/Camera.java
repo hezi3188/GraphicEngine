@@ -13,14 +13,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Camera {
-    /**
-     *
-     */
     protected Point3D position;
     protected vector CamFront;
     protected vector CamUp;
     protected vector CamLeft;
 
+    /**
+     * defult constractor. cam position on (0,0,0) look to z = -1
+     */
     public Camera(){
         this.position = new Point3D(0.0,0.0,0.0);
         this.CamFront = new vector(new Point3D(0,0,-1));
@@ -28,6 +28,12 @@ public class Camera {
         this.CamLeft = CamFront.crossProduct(CamUp);
     }
 
+    /**
+     *  this constractor need ortogonal normalize vectors.
+     * @param point position of camera
+     * @param ahead front look of camera
+     * @param up up vector of camera
+     */
     public Camera(Point3D point, vector ahead, vector up)
     {
         this.position = new Point3D(point);
