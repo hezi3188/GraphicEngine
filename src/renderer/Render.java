@@ -1,7 +1,5 @@
 package renderer;
-/**
- * The class to clac for every point on scene their color
- */
+
 
 import elements.*;
 import geometries.*;
@@ -13,6 +11,9 @@ import scene.Scene;
 
 import java.util.*;
 
+/**
+ * The class to clac for every point on scene their color
+ */
 public class Render {
 
     /**

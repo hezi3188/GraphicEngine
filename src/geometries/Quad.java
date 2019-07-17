@@ -1,12 +1,13 @@
 package geometries;
-/**
- * Quad is two triangle that defint by 4 points
- */
+
 
 import primitives.*;
 
 import java.util.List;
 
+/**
+ * Quad is two triangle that defint by 4 points
+ */
 public class Quad  extends Geometry  {
     Point3D TopRight;
     Point3D TopLeft;
@@ -18,8 +19,8 @@ public class Quad  extends Geometry  {
     /**
      *
      * @param topRight point for first triangle
-     * @param topLeft point for first triangle & for secend triangle
-     * @param bottumRight point for first triangle & for secend triangle
+     * @param topLeft point for first triangle and for secend triangle
+     * @param bottumRight point for first triangle and for secend triangle
      * @param bottumLeft for secend triangle
      * @param c color
      */
@@ -34,8 +35,8 @@ public class Quad  extends Geometry  {
     /**
      *
      * @param topRight point for first triangle
-     * @param topLeft point for first triangle & for secend triangle
-     * @param bottumRight point for first triangle & for secend triangle
+     * @param topLeft point for first triangle and for secend triangle
+     * @param bottumRight point for first triangle and for secend triangle
      * @param bottumLeft for secend triangle
      * @param c color
      * @param M material

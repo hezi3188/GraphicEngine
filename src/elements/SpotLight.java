@@ -1,12 +1,13 @@
 package elements;
-/**
- * SpotLight light on scene
- */
+
 
 import primitives.Color;
 import primitives.Point3D;
 import primitives.vector;
 
+/**
+ * SpotLight light on scene
+ */
 public class SpotLight extends PointLight {
     vector _direction;
 

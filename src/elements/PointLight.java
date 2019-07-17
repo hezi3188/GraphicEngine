@@ -1,11 +1,11 @@
 package elements;
-/**
- * PointLight light on scene
- */
 
 import primitives.Color;
 import primitives.Point3D;
 import primitives.vector;
+/**
+ * PointLight light on scene
+ */
 
 public class PointLight extends Light implements LightSource {
     public Point3D get_position() {

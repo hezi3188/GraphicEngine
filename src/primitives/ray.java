@@ -21,8 +21,8 @@ public class ray extends vector {
 	/**
 	 * Constructor that get 3d point start and the end
 	 * is 3d point to new ray
-	 * @param strat
-	 * @param End
+	 * @param strat Start
+	 * @param End End
 	 */
 	public ray(Point3D strat, Point3D End) {
 		super(End.substract(strat).normalize());

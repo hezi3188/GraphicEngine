@@ -1,11 +1,11 @@
 package elements;
-/**
- * interface of lights
- */
 
 import primitives.Color;
 import primitives.Point3D;
 import primitives.vector;
+/**
+ * interface of lights
+ */
 
 public interface LightSource {
     Color getIntensity(Point3D point);
