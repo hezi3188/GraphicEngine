@@ -3,13 +3,13 @@ package Api;
 import geometries.Geometry;
 
 public class Group {
-    public Geometry[] G;
+    public Object[] G;
 
-    Group(Geometry[] g){
+    Group(Object[] g){
         G = g;
     }
 
-    public Geometry[] getG() {
+    public Object[] getG() {
         return G;
     }
 }

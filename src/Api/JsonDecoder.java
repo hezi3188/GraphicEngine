@@ -32,17 +32,17 @@ public class JsonDecoder {
      * @param o arr of geomtry and groups
      * @return arr of geomtry
      */
-    public static Geometry[] append(Object[] o){
-        List<Geometry> list = new LinkedList<Geometry>();
+    public static Object[] append(Object[] o){
+        List<Object> list = new LinkedList<Object>();
         for (Object x:o){
             if(x instanceof Group){
                 list.addAll(Arrays.asList(append(((Group) x).getG())));
             }
             else{
-                list.add((Geometry) x);
+                list.add((Object) x);
             }
         }
-        return (Geometry[]) list.toArray();
+        return (Object[]) list.toArray();
     }
 
     /**
@@ -63,7 +63,7 @@ public class JsonDecoder {
             Object temp = newObj(getStr(geo.getJSONObject(i), "name"), getArr(geo.getJSONObject(i), "param"));
             if(temp instanceof Group)
                 for(Object g:append(((Group) temp).getG())){
-                    scene.insertImage((Geometry)temp);
+                    scene.insertImage((Geometry)g);
                 }
             else
                 scene.insertImage((Geometry)temp);
@@ -136,7 +136,7 @@ public class JsonDecoder {
             } else if (name.equals("Quad") && param.length() == 6) {
                 return new Quad((Point3D)Params[0], (Point3D)Params[1], (Point3D)Params[2], (Point3D)Params[3], (Color)Params[4],(Material)Params[5]);
             } else if (name.equals("Group")) {
-                return new Group((Geometry[])Params);
+                return new Group(Params);
             } else if (name.equals("Focus") && param.length() == 2) {
                 if((double)Params[0] != 100) Focus.enable = true; else Focus.enable = false;
                 return new Focus((double)Params[0], (double)Params[1]);
